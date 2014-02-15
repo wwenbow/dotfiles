@@ -1,0 +1,11 @@
+
+alias rm='rm -vfr'
+alias cp='cp -ivR'
+alias mv='mv -iv'
+alias du='du -ch'
+alias df='df -H'
+alias bc='bc -l'
+alias mkdir='mkdir -pv'
+alias cd..='cd ..'
+alias g='gnome-open'
+alias ln='ln -v'

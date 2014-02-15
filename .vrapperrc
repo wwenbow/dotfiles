@@ -1,0 +1,14 @@
+" Vrapper Options
+
+" Search options
+set hlsearch
+set incsearch
+
+set ignorecase
+set smartcase
+
+"show line number
+set number
+
+"Y yank to end of line
+set saney
