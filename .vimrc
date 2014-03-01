@@ -115,6 +115,9 @@ function! AutoHighlightToggle()
   endif
 endfunction
 
+" Auto remove trailing whitespace
+autocmd BufWritePre *.py :%s/\s\+$//e
+
 "------------------------------------------------------------
 " Must have options {{{1
 "
