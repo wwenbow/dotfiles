@@ -207,6 +207,8 @@ Bundle 'majutsushi/tagbar'
 Bundle 'scrooloose/syntastic'
 Bundle 'sjl/gundo.vim'
 Bundle 'Raimondi/delimitMate'
+" Sourceforge
+Bundle 'git://git.code.sf.net/p/vim-latex/vim-latex'
 " snipMate
 Bundle "MarcWeber/vim-addon-mw-utils"
 Bundle "tomtom/tlib_vim"
