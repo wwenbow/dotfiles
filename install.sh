@@ -8,9 +8,12 @@
 
 dir=~/dotfiles                    # dotfiles directory
 olddir=~/dotfiles_old             # old dotfiles backup directory
-files="bashrc vimrc vim bash_aliases vrapperrc"    # list of files/folders to symlink in homedir
+files="bashrc vimrc vim bash_aliases vrapperrc zshrc oh-my-zsh"    # list of files/folders to symlink in homedir
 
 ##########
+
+# Download oh-my-zsh
+git clone git://github.com/robbyrussell/oh-my-zsh.git ~/dotfiles/.oh-my-zsh
 
 # create dotfiles_old in homedir
 echo "Creating $olddir for backup of any existing dotfiles in ~"
