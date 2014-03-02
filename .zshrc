@@ -8,22 +8,6 @@ ZSH=$HOME/.oh-my-zsh
 #$ZSH_THEME="robbyrussell"
 ZSH_THEME="ys"
 
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-
-# Set to this to use case-sensitive completion
-# CASE_SENSITIVE="true"
-
-# Uncomment this to disable bi-weekly auto-update checks
-# DISABLE_AUTO_UPDATE="true"
-
-# Uncomment to change how often before auto-updates occur? (in days)
-# export UPDATE_ZSH_DAYS=13
-
-# Uncomment following line if you want to disable colors in ls
-# DISABLE_LS_COLORS="true"
-
 # Uncomment following line if you want to disable autosetting terminal title.
 # DISABLE_AUTO_TITLE="true"
 
@@ -46,7 +30,7 @@ ZSH_THEME="ys"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git python command-not-found compleat)
+plugins=(git python command-not-found compleat zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -67,6 +51,10 @@ export PATH="/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/
 
 # ssh
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
+
+# Dir colors
+eval "$(dircolors ~/.dir_colors)"
+zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 
 # aliases
 alias ls='ls -XF --color=auto --group-directories-first'
