@@ -65,10 +65,8 @@ endif
 
 "------------------------------------------------------------------------------
 " color scheme
-if has('gui_running')
-    set background=dark
-    colorscheme solarized
-endif
+set background=dark
+colorscheme solarized
 
 "------------------------------------------------------------------------------
 " Features {{{1

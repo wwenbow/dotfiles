@@ -52,7 +52,8 @@ export PATH="/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/
 # ssh
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
 
-# Dir colors
+# colors
+export TERM=xterm-256color
 eval "$(dircolors ~/.dir_colors)"
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 
