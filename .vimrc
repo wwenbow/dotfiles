@@ -37,8 +37,10 @@ Bundle 'scrooloose/syntastic'
 Bundle 'sjl/gundo.vim'
 Bundle 'Raimondi/delimitMate'
 Bundle 'altercation/vim-colors-solarized'
+Bundle 'fholgado/minibufexpl.vim'
 " Sourceforge
 Bundle 'git://git.code.sf.net/p/vim-latex/vim-latex'
+" scripts from http://vim-scripts.org/vim/scripts.html
 " snipMate
 Bundle "MarcWeber/vim-addon-mw-utils"
 Bundle "tomtom/tlib_vim"
@@ -206,6 +208,8 @@ set pastetoggle=<F11>
 " Natural slpit opening
 set splitbelow
 set splitright
+" minibuffexplorer split on top
+let g:miniBufExplBRSplit=0
 
 "------------------------------------------------------------
 " Indentation options {{{1
@@ -264,3 +268,5 @@ filetype indent on
 " 'plaintex' instead of 'tex', which results in vim-latex not being loaded.
 " The following changes the default filetype back to 'tex':
 let g:tex_flavor='latex'
+let g:Tex_DefaultTargetFormat='pdf'
+let g:Tex_UseMakefile=0
