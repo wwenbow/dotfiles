@@ -6,7 +6,7 @@ ZSH=$HOME/.oh-my-zsh
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
 #$ZSH_THEME="robbyrussell"
-ZSH_THEME="agnoster"
+ZSH_THEME="agnoster-old"
 
 # Uncomment following line if you want to disable autosetting terminal title.
 # DISABLE_AUTO_TITLE="true"
@@ -71,5 +71,5 @@ alias df='df -H'
 alias bc='bc -l'
 alias mkdir='mkdir -pv'
 alias cd..='cd ..'
-alias g='gnome-open'
+alias g='xdg-open'
 alias ln='ln -v'
