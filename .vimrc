@@ -4,22 +4,39 @@
 "              newbie, basing your first .vimrc on this file is a good choice.
 "              If you're a more advanced user, building your own .vimrc based
 "              on this file is still a good idea.
-
-"------------------------------------------------------------
+"------------------------------------------------------------------------------ 
 " Vundle Settings
 "
 " Setting up Vundle - the vim plugin bundler
+
 let iCanHazVundle=1
-let vundle_readme=expand('~/.vim/bundle/vundle/README.md')
+if has('win32') || has('win64')
+	let vundle_readme=expand('~/vimfiles/bundle/vundle/README.md')
+else
+	let vundle_readme=expand('~/.vim/bundle/vundle/README.md')
+endif
+
 if !filereadable(vundle_readme)
     echo "Installing Vundle.."
     echo ""
-    silent !mkdir -p ~/.vim/bundle
-    silent !git clone https://github.com/gmarik/vundle ~/.vim/bundle/vundle
+    if has('win32') || has('win64')
+        silent !mkdir -p ~/vimfiles/bundle
+        silent !git clone https://github.com/gmarik/vundle ~/vimfiles/bundle/vundle
+    else
+        silent !mkdir -p ~/.vim/bundle
+        silent !git clone https://github.com/gmarik/vundle ~/.vim/bundle/vundle
+    endif
     let iCanHazVundle=0
 endif
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+
+if has('win32') || has('win64')
+	set rtp+=~/vimfiles/bundle/vundle/
+	let path='~/vimfiles/bundle'
+	call vundle#rc(path)
+else
+	set rtp+=~/.vim/bundle/vundle/
+	call vundle#rc()
+endif
 
 " let Vundle manage Vundle
 " required! 
@@ -69,6 +86,14 @@ endif
 " color scheme
 set background=dark
 colorscheme solarized
+" font
+if has("gui_running")
+  if has("gui_macvim")
+    set guifont=Menlo\ Regular:h14
+  elseif has("gui_win32")
+    set guifont=Consolas:h11:cANSI
+  endif
+endif
 
 "------------------------------------------------------------------------------
 " Features {{{1
@@ -227,7 +252,6 @@ set expandtab
 "set shiftwidth=2
 "set tabstop=2
 
-
 "------------------------------------------------------------
 " Mappings {{{1
 "
@@ -246,6 +270,25 @@ nnoremap <F5> :GundoToggle<CR>
 
 " Tagbar toggle
 nmap <F8> :TagbarToggle<CR> 
+
+" Switch buffers using alt+number
+nnoremap <M-1> :1b<CR>
+nnoremap <M-2> :2b<CR>
+nnoremap <M-3> :3b<CR>
+nnoremap <M-4> :4b<CR>
+nnoremap <M-5> :5b<CR>
+nnoremap <M-6> :6b<CR>
+nnoremap <M-7> :7b<CR>
+nnoremap <M-8> :8b<CR>
+nnoremap <M-9> :9b<CR>
+nnoremap <M-0> :10b<CR>
+
+" Switch windows using ctrl+hjkl
+noremap <C-J>     <C-W>j
+noremap <C-K>     <C-W>k
+noremap <C-H>     <C-W>h
+noremap <C-L>     <C-W>l
+
 "------------------------------------------------------------
 " Vim-Latex Settings
 "
