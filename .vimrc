@@ -247,6 +247,9 @@ set shiftwidth=4
 set softtabstop=4
 set expandtab
 
+" Do not push preprocessor directives left
+set cinkeys-=0#
+
 " Indentation settings for using hard tabs for indent. Display tabs as
 " two characters wide.
 "set shiftwidth=2
@@ -263,7 +266,7 @@ map Y y$
 
 " Map <C-L> (redraw screen) to also turn off search highlighting until the
 " next search
-nnoremap <C-L> :nohl<CR><C-L>
+nnoremap <F3> :nohl<CR>
 
 " Gundo toggle
 nnoremap <F5> :GundoToggle<CR>
