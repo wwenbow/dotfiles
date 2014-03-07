@@ -12,11 +12,6 @@ files="vimrc vim bash_aliases vrapperrc dir_colors oh-my-zsh"    # list of files
 
 ##########
 
-# Download oh-my-zsh
-git clone git://github.com/robbyrussell/oh-my-zsh.git ~/dotfiles/.oh-my-zsh
-# copy old agnoster theme to oh-my-zsh themes
-cp agnoster-theme/agnoster-old.zsh-theme ~/dotfiles/.oh-my-zsh/themes/
-
 # create dotfiles_old in homedir
 echo "Creating $olddir for backup of any existing dotfiles in ~"
 mkdir -p $olddir
