@@ -86,6 +86,7 @@ endif
 " color scheme
 set background=dark
 colorscheme solarized
+set t_Co=256
 " font
 if has("gui_running")
   if has("gui_macvim")
@@ -111,7 +112,11 @@ filetype indent plugin on
 syntax on
 
 " Copy your ubuntu clipboard
-set clipboard=unnamedplus
+if ("linux")
+    set clipboard=unnamedplus
+else 
+    set clipboard=unnamed
+endif
 
 " Highlight column 80, page border
 " set colorcolumn=80
