@@ -324,3 +324,12 @@ filetype indent on
 let g:tex_flavor='latex'
 let g:Tex_DefaultTargetFormat='pdf'
 let g:Tex_UseMakefile=0
+
+"------------------------------------------------------------
+" Custom settings for local machine
+"
+if filereadable(".vimrc.local")
+    source .vimrc.local
+endif
+
+
