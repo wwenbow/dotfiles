@@ -118,6 +118,9 @@ else
     set clipboard=unnamed
 endif
 
+" Omni completion
+set omnifunc=syntaxcomplete#Complete
+
 " Highlight column 80, page border
 " set colorcolumn=80
 
