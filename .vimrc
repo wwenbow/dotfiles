@@ -47,22 +47,24 @@ Bundle 'gmarik/vundle'
 " original repos on GitHub
 Bundle 'tpope/vim-fugitive'
 Bundle 'Lokaltog/vim-easymotion'
-Bundle 'ervandew/supertab'
+"Bundle 'ervandew/supertab'
 Bundle 'scrooloose/nerdtree'
 Bundle 'majutsushi/tagbar'
 Bundle 'scrooloose/syntastic'
 Bundle 'sjl/gundo.vim'
-Bundle 'Raimondi/delimitMate'
+"Bundle 'Raimondi/delimitMate'
 Bundle 'altercation/vim-colors-solarized'
-Bundle 'fholgado/minibufexpl.vim'
+"Bundle 'fholgado/minibufexpl.vim'
+Bundle 'bling/vim-airline'
+Bundle 'Valloric/YouCompleteMe'
 " Sourceforge
 Bundle 'git://git.code.sf.net/p/vim-latex/vim-latex'
 " scripts from http://vim-scripts.org/vim/scripts.html
 " snipMate
-Bundle "MarcWeber/vim-addon-mw-utils"
-Bundle "tomtom/tlib_vim"
-Bundle "garbas/vim-snipmate"
-Bundle "honza/vim-snippets"
+"Bundle "MarcWeber/vim-addon-mw-utils"
+"Bundle "tomtom/tlib_vim"
+"Bundle "garbas/vim-snipmate"
+"Bundle "honza/vim-snippets"
 
 filetype plugin indent on     " required!
 "
@@ -242,7 +244,7 @@ set pastetoggle=<F11>
 set splitbelow
 set splitright
 " minibuffexplorer split on top
-let g:miniBufExplBRSplit=0
+"let g:miniBufExplBRSplit=0
 
 "------------------------------------------------------------
 " Indentation options {{{1
@@ -324,3 +326,8 @@ filetype indent on
 let g:tex_flavor='latex'
 let g:Tex_DefaultTargetFormat='pdf'
 let g:Tex_UseMakefile=0
+
+"------------------------------------------------------------
+"
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
