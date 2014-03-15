@@ -5,84 +5,86 @@
 "              If you're a more advanced user, building your own .vimrc based
 "              on this file is still a good idea.
 "------------------------------------------------------------------------------ 
-" Vundle Settings
+" NeoBundle Settings
 "
-" Setting up Vundle - the vim plugin bundler
+" Setting up NeoBundle - the vim plugin bundler
 
-let iCanHazVundle=1
+let iCanHazNeoBundle=1
 if has('win32') || has('win64')
-	let vundle_readme=expand('~/vimfiles/bundle/vundle/README.md')
+	let neobundle_readme=expand('~/vimfiles/bundle/neobundle.vim/README.md')
 else
-	let vundle_readme=expand('~/.vim/bundle/vundle/README.md')
+	let neobundle_readme=expand('~/.vim/bundle/neobundle.vim/README.md')
 endif
 
-if !filereadable(vundle_readme)
-    echo "Installing Vundle.."
+if !filereadable(neobundle_readme)
+    echo "Installing neobundle.."
     echo ""
     if has('win32') || has('win64')
         silent !mkdir -p ~/vimfiles/bundle
-        silent !git clone https://github.com/gmarik/vundle ~/vimfiles/bundle/vundle
+        silent !git clone https://github.com/Shougo/neobundle.vim ~/vimfiles/bundle/neobundle.vim
     else
         silent !mkdir -p ~/.vim/bundle
-        silent !git clone https://github.com/gmarik/vundle ~/.vim/bundle/vundle
+        silent !git clone https://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
     endif
-    let iCanHazVundle=0
+    let iCanHazNeoBundle=0
 endif
 
 if has('win32') || has('win64')
-	set rtp+=~/vimfiles/bundle/vundle/
+	set runtimepath+=~/vimfiles/bundle/neobundle.vim/
 	let path='~/vimfiles/bundle'
-	call vundle#rc(path)
+	call neobundle#rc(expand(path))
 else
-	set rtp+=~/.vim/bundle/vundle/
-	call vundle#rc()
+	set runtimepath+=~/.vim/bundle/neobundle.vim/
+	let path='~/.vim/bundle'
+	call neobundle#rc(expand(path))
 endif
 
-" let Vundle manage Vundle
+" let NeoBundle manage NeoBundle
 " required! 
-Bundle 'gmarik/vundle'
+NeoBundleFetch 'Shougo/neobundle.vim'
 
 " My bundles here:
 "
 " original repos on GitHub
-Bundle 'tpope/vim-fugitive'
-Bundle 'Lokaltog/vim-easymotion'
-"Bundle 'ervandew/supertab'
-Bundle 'scrooloose/nerdtree'
-Bundle 'majutsushi/tagbar'
-Bundle 'scrooloose/syntastic'
-Bundle 'sjl/gundo.vim'
-"Bundle 'Raimondi/delimitMate'
-Bundle 'altercation/vim-colors-solarized'
+NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'Lokaltog/vim-easymotion'
+NeoBundle 'scrooloose/nerdtree'
+NeoBundle 'majutsushi/tagbar'
+NeoBundle 'scrooloose/syntastic'
+NeoBundle 'sjl/gundo.vim'
+NeoBundle 'altercation/vim-colors-solarized'
+NeoBundle 'bling/vim-airline'
+NeoBundle 'Shougo/neosnippet.vim'
+NeoBundle 'Shougo/neosnippet-snippets'
+NeoBundle 'Shougo/neocomplete.vim'
+NeoBundle 'Shougo/unite.vim'
+NeoBundle 'Shougo/vimproc.vim'
+"Bundle 'Valloric/YouCompleteMe'
 "Bundle 'fholgado/minibufexpl.vim'
-Bundle 'bling/vim-airline'
-Bundle 'Valloric/YouCompleteMe'
+"Bundle 'Raimondi/delimitMate'
+"Bundle 'ervandew/supertab'
+"
 " Sourceforge
-Bundle 'git://git.code.sf.net/p/vim-latex/vim-latex'
+NeoBundle 'git://git.code.sf.net/p/vim-latex/vim-latex'
+"
 " scripts from http://vim-scripts.org/vim/scripts.html
+"
 " snipMate
-"Bundle "MarcWeber/vim-addon-mw-utils"
-"Bundle "tomtom/tlib_vim"
-"Bundle "garbas/vim-snipmate"
-"Bundle "honza/vim-snippets"
+"Bundle 'MarcWeber/vim-addon-mw-utils'
+"Bundle 'tomtom/tlib_vim'
+"Bundle 'garbas/vim-snipmate'
+"Bundle 'honza/vim-snippets'
 
 filetype plugin indent on     " required!
-"
-" Brief help
-" :BundleList          - list configured bundles
-" :BundleInstall(!)    - install (update) bundles
-" :BundleSearch(!) foo - search (or refresh cache first) for foo
-" :BundleClean(!)      - confirm (or auto-approve) removal of unused bundles
-"
-" see :h vundle for more details or wiki for FAQ
-" NOTE: comments after Bundle commands are not allowed.
 
-if iCanHazVundle == 0
+NeoBundleCheck
+
+if iCanHazNeoBundle == 0
     echo "Installing Bundles, please ignore key map error messages"
     echo ""
-    :BundleInstall
+    :NeoBundleInstall
 endif
-" Setting up Vundle - the vim plugin bundler end
+" Setting up NeoBundle - the vim plugin bundler end
 
 "------------------------------------------------------------------------------
 " color scheme
@@ -153,7 +155,7 @@ function! AutoHighlightToggle()
 endfunction
 
 " Auto remove trailing whitespace
-autocmd BufWritePre *.py :%s/\s\+$//e
+autocmd BufWritePre *.cu :%s/\s\+$//e
 
 "------------------------------------------------------------
 " Must have options {{{1
@@ -265,6 +267,9 @@ set cinkeys-=0#
 "set shiftwidth=2
 "set tabstop=2
 
+" cs267 2 tabs
+autocmd BufRead */cs_267/homewor*/*.c* :set shiftwidth=2 softtabstop=2
+
 "------------------------------------------------------------
 " Mappings {{{1
 "
@@ -328,6 +333,114 @@ let g:Tex_DefaultTargetFormat='pdf'
 let g:Tex_UseMakefile=0
 
 "------------------------------------------------------------
-"
+" Airline
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
+
+"------------------------------------------------------------
+" NeoComplete and NeoSnippet Settings
+" NEOCOMPLETE
+"Note: This option must set it in .vimrc(_vimrc).  NOT IN .gvimrc(_gvimrc)!
+" Disable AutoComplPop.
+let g:acp_enableAtStartup = 0
+" Use neocomplete.
+let g:neocomplete#enable_at_startup = 1
+" Use smartcase.
+let g:neocomplete#enable_smart_case = 1
+" Set minimum syntax keyword length.
+let g:neocomplete#sources#syntax#min_keyword_length = 3
+let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
+
+" Define dictionary.
+let g:neocomplete#sources#dictionary#dictionaries = {
+    \ 'default' : '',
+    \ 'vimshell' : $HOME.'/.vimshell_hist',
+    \ 'scheme' : $HOME.'/.gosh_completions'
+        \ }
+
+" Define keyword.
+if !exists('g:neocomplete#keyword_patterns')
+    let g:neocomplete#keyword_patterns = {}
+endif
+let g:neocomplete#keyword_patterns['default'] = '\h\w*'
+
+" Plugin key-mappings.
+inoremap <expr><C-g>     neocomplete#undo_completion()
+inoremap <expr><C-l>     neocomplete#complete_common_string()
+
+" Recommended key-mappings.
+" <CR>: close popup and save indent.
+inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+function! s:my_cr_function()
+  return neocomplete#close_popup() . "\<CR>"
+  " For no inserting <CR> key.
+  "return pumvisible() ? neocomplete#close_popup() : "\<CR>"
+endfunction
+" <TAB>: completion.
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+" <C-h>, <BS>: close popup and delete backword char.
+inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
+inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
+inoremap <expr><C-y>  neocomplete#close_popup()
+inoremap <expr><C-e>  neocomplete#cancel_popup()
+" Close popup by <Space>.
+"inoremap <expr><Space> pumvisible() ? neocomplete#close_popup() : "\<Space>"
+
+" For cursor moving in insert mode(Not recommended)
+"inoremap <expr><Left>  neocomplete#close_popup() . "\<Left>"
+"inoremap <expr><Right> neocomplete#close_popup() . "\<Right>"
+"inoremap <expr><Up>    neocomplete#close_popup() . "\<Up>"
+"inoremap <expr><Down>  neocomplete#close_popup() . "\<Down>"
+" Or set this.
+"let g:neocomplete#enable_cursor_hold_i = 1
+" Or set this.
+"let g:neocomplete#enable_insert_char_pre = 1
+
+" AutoComplPop like behavior.
+"let g:neocomplete#enable_auto_select = 1
+
+" Shell like behavior(not recommended).
+"set completeopt+=longest
+"let g:neocomplete#enable_auto_select = 1
+"let g:neocomplete#disable_auto_complete = 1
+"inoremap <expr><TAB>  pumvisible() ? "\<Down>" : "\<C-x>\<C-u>"
+
+" Enable omni completion.
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+
+" Enable heavy omni completion.
+if !exists('g:neocomplete#sources#omni#input_patterns')
+  let g:neocomplete#sources#omni#input_patterns = {}
+endif
+"let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
+"let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
+"let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+
+" For perlomni.vim setting.
+" https://github.com/c9s/perlomni.vim
+let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
+
+" NEOSNIPPET
+" Plugin key-mappings.
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-k>     <Plug>(neosnippet_expand_target)
+
+" SuperTab like snippets behavior.
+imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)"
+\: pumvisible() ? "\<C-n>" : "\<TAB>"
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)"
+\: "\<TAB>"
+
+" For snippet_complete marker.
+if has('conceal')
+  set conceallevel=2 concealcursor=i
+endif
+
+"------------------------------------------------------------
