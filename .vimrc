@@ -5,6 +5,10 @@
 "              If you're a more advanced user, building your own .vimrc based
 "              on this file is still a good idea.
 "------------------------------------------------------------------------------ 
+"Set 'nocompatible' to ward off unexpected things that your distro might
+" have made, as well as sanely reset options when re-sourcing .vimrc
+set nocompatible
+
 " NeoBundle Settings
 "
 " Setting up NeoBundle - the vim plugin bundler
@@ -54,15 +58,26 @@ NeoBundle 'scrooloose/syntastic'
 NeoBundle 'sjl/gundo.vim'
 NeoBundle 'altercation/vim-colors-solarized'
 NeoBundle 'bling/vim-airline'
-NeoBundle 'Shougo/neosnippet.vim'
-NeoBundle 'Shougo/neosnippet-snippets'
-NeoBundle 'Shougo/neocomplete.vim'
 NeoBundle 'Shougo/unite.vim'
-NeoBundle 'Shougo/vimproc.vim'
-"Bundle 'Valloric/YouCompleteMe'
-"Bundle 'fholgado/minibufexpl.vim'
-"Bundle 'Raimondi/delimitMate'
-"Bundle 'ervandew/supertab'
+NeoBundle 'terryma/vim-multiple-cursors'
+NeoBundle 'Shougo/vimproc', {
+            \ 'build' : {
+            \     'windows' : 'make -f make_mingw32.mak',
+            \     'cygwin' : 'make -f make_cygwin.mak',
+            \     'mac' : 'make -f make_mac.mak',
+            \     'unix' : 'make -f make_unix.mak',
+            \    },
+            \ }
+NeoBundle 'Valloric/YouCompleteMe' , {
+            \ 'build' : {
+            \    'unix' : './install.sh --clang-completer'
+            \    },
+            \ }
+NeoBundle 'SirVer/ultisnips'
+NeoBundle 'kien/ctrlp.vim'
+"NeoBundle 'Shougo/neosnippet.vim'
+"NeoBundle 'Shougo/neosnippet-snippets'
+"NeoBundle 'Shougo/neocomplete.vim'
 "
 " Sourceforge
 NeoBundle 'git://git.code.sf.net/p/vim-latex/vim-latex'
@@ -103,10 +118,6 @@ endif
 "------------------------------------------------------------------------------
 " Features {{{1
 "
-" Set 'nocompatible' to ward off unexpected things that your distro might
-" have made, as well as sanely reset options when re-sourcing .vimrc
-set nocompatible
-
 " Attempt to determine the type of a file based on its name and possibly its
 " contents. Use this to allow intelligent auto-indenting for each filetype,
 " and for plugins that are filetype specific.
@@ -116,7 +127,7 @@ filetype indent plugin on
 syntax on
 
 " Copy your ubuntu clipboard
-if ("linux")
+if ("unix")
     set clipboard=unnamedplus
 else 
     set clipboard=unnamed
@@ -126,7 +137,7 @@ endif
 set omnifunc=syntaxcomplete#Complete
 
 " Highlight column 80, page border
-" set colorcolumn=80
+set colorcolumn=80
 
 " Wrap text at column 79
 " set tw=79
@@ -158,90 +169,50 @@ endfunction
 autocmd BufWritePre *.cu :%s/\s\+$//e
 
 "------------------------------------------------------------
-" Must have options {{{1
+" Must have options
 "
-" One such option is the 'hidden' option, which allows you to re-use the same
-" window and switch from an unsaved buffer without saving it first. Also allows
-" you to keep an undo history for multiple files when re-using the same window
-" in this way. 
 set hidden
-
-" Note that not everyone likes working this way (with the hidden option).
-" Alternatives include using tabs or split windows instead of re-using the same
-" window as mentioned above, and/or either of the following options:
-" set confirm
-" set autowriteall
-
 " Better command-line completion
 set wildmenu
-
 " Show partial commands in the last line of the screen
 set showcmd
-
-" Highlight searches (use <C-L> to temporarily turn off highlighting; see the
-" mapping of <C-L> below)
+" Highlight searches 
 set hlsearch
 
-" Modelines have historically been a source of security vulnerabilities. As
-" such, it may be a good idea to disable them and use the securemodelines
-" script, <http://www.vim.org/scripts/script.php?script_id=1876>.
-" set nomodeline
-
-
 "------------------------------------------------------------
-" Usability options {{{1
+" Usability options
 "
 " Use case insensitive search, except when using capital letters
 set ignorecase
 set smartcase
-
 " Allow backspacing over autoindent, line breaks and start of insert action
 set backspace=indent,eol,start
-
 " When opening a new line and no filetype-specific indenting is enabled, keep
 " the same indent as the line you're currently on. Useful for READMEs, etc.
 set autoindent
-
 " Stop certain movements from always going to the first character of a line.
-" While this behaviour deviates from that of Vi, it does what most users
-" coming from other editors would expect.
 set nostartofline
-
 " Display the cursor position on the last line of the screen or in the status
-" line of a window
 set ruler
-
 " Always display the status line, even if only one window is displayed
 set laststatus=2
-
 " Instead of failing a command because of unsaved changes, instead raise a
 " dialogue asking if you wish to save changed files.
 set confirm
-
 " Use visual bell instead of beeping when doing something wrong
 set visualbell
-
 " And reset the terminal code for the visual bell. If visualbell is set, and
-" this line is also included, vim will neither flash nor beep. If visualbell
-" is unset, this does nothing.
 set t_vb=
-
 " Enable use of the mouse for all modes
 set mouse=a
-
 " Set the command window height to 2 lines, to avoid many cases of having to
-" "press <Enter> to continue"
 set cmdheight=2
-
 " Display line numbers on the left
 set number
-
 " Quickly time out on keycodes, but never time out on mappings
 set notimeout ttimeout ttimeoutlen=200
-
 " Use <F11> to toggle between 'paste' and 'nopaste'
 set pastetoggle=<F11>
-
 " Natural slpit opening
 set splitbelow
 set splitright
@@ -249,46 +220,33 @@ set splitright
 "let g:miniBufExplBRSplit=0
 
 "------------------------------------------------------------
-" Indentation options {{{1
+" Indentation options
 "
-" Indentation settings according to personal preference.
-
 " Indentation settings for using 2 spaces instead of tabs.
 " Do not change 'tabstop' from its default value of 8 with this setup.
 set shiftwidth=4
 set softtabstop=4
 set expandtab
-
 " Do not push preprocessor directives left
 set cinkeys-=0#
-
 " Indentation settings for using hard tabs for indent. Display tabs as
 " two characters wide.
 "set shiftwidth=2
 "set tabstop=2
-
 " cs267 2 tabs
 autocmd BufRead */cs_267/homewor*/*.c* :set shiftwidth=2 softtabstop=2
 
 "------------------------------------------------------------
-" Mappings {{{1
+" Mappings 
 "
-" Useful mappings
-
 " Map Y to act like D and C, i.e. to yank until EOL, rather than act as yy,
-" which is the default
 map Y y$
-
-" Map <C-L> (redraw screen) to also turn off search highlighting until the
-" next search
+" Map <F3> (redraw screen) to also turn off search highlighting until the
 nnoremap <F3> :nohl<CR>
-
 " Gundo toggle
 nnoremap <F5> :GundoToggle<CR>
-
 " Tagbar toggle
 nmap <F8> :TagbarToggle<CR> 
-
 " Switch buffers using alt+number
 nnoremap <M-1> :1b<CR>
 nnoremap <M-2> :2b<CR>
@@ -300,7 +258,6 @@ nnoremap <M-7> :7b<CR>
 nnoremap <M-8> :8b<CR>
 nnoremap <M-9> :9b<CR>
 nnoremap <M-0> :10b<CR>
-
 " Switch windows using ctrl+hjkl
 noremap <C-J>     <C-W>j
 noremap <C-K>     <C-W>k
@@ -337,110 +294,110 @@ let g:Tex_UseMakefile=0
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 
-"------------------------------------------------------------
-" NeoComplete and NeoSnippet Settings
-" NEOCOMPLETE
-"Note: This option must set it in .vimrc(_vimrc).  NOT IN .gvimrc(_gvimrc)!
-" Disable AutoComplPop.
-let g:acp_enableAtStartup = 0
-" Use neocomplete.
-let g:neocomplete#enable_at_startup = 1
-" Use smartcase.
-let g:neocomplete#enable_smart_case = 1
-" Set minimum syntax keyword length.
-let g:neocomplete#sources#syntax#min_keyword_length = 3
-let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
-
-" Define dictionary.
-let g:neocomplete#sources#dictionary#dictionaries = {
-    \ 'default' : '',
-    \ 'vimshell' : $HOME.'/.vimshell_hist',
-    \ 'scheme' : $HOME.'/.gosh_completions'
-        \ }
-
-" Define keyword.
-if !exists('g:neocomplete#keyword_patterns')
-    let g:neocomplete#keyword_patterns = {}
-endif
-let g:neocomplete#keyword_patterns['default'] = '\h\w*'
-
-" Plugin key-mappings.
-inoremap <expr><C-g>     neocomplete#undo_completion()
-inoremap <expr><C-l>     neocomplete#complete_common_string()
-
-" Recommended key-mappings.
-" <CR>: close popup and save indent.
-inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-function! s:my_cr_function()
-  return neocomplete#close_popup() . "\<CR>"
-  " For no inserting <CR> key.
-  "return pumvisible() ? neocomplete#close_popup() : "\<CR>"
-endfunction
-" <TAB>: completion.
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-" <C-h>, <BS>: close popup and delete backword char.
-inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
-inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
-inoremap <expr><C-y>  neocomplete#close_popup()
-inoremap <expr><C-e>  neocomplete#cancel_popup()
-" Close popup by <Space>.
-"inoremap <expr><Space> pumvisible() ? neocomplete#close_popup() : "\<Space>"
-
-" For cursor moving in insert mode(Not recommended)
-"inoremap <expr><Left>  neocomplete#close_popup() . "\<Left>"
-"inoremap <expr><Right> neocomplete#close_popup() . "\<Right>"
-"inoremap <expr><Up>    neocomplete#close_popup() . "\<Up>"
-"inoremap <expr><Down>  neocomplete#close_popup() . "\<Down>"
-" Or set this.
-"let g:neocomplete#enable_cursor_hold_i = 1
-" Or set this.
-"let g:neocomplete#enable_insert_char_pre = 1
-
-" AutoComplPop like behavior.
-"let g:neocomplete#enable_auto_select = 1
-
-" Shell like behavior(not recommended).
-"set completeopt+=longest
-"let g:neocomplete#enable_auto_select = 1
-"let g:neocomplete#disable_auto_complete = 1
-"inoremap <expr><TAB>  pumvisible() ? "\<Down>" : "\<C-x>\<C-u>"
-
-" Enable omni completion.
-autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-
-" Enable heavy omni completion.
-if !exists('g:neocomplete#sources#omni#input_patterns')
-  let g:neocomplete#sources#omni#input_patterns = {}
-endif
-"let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
-"let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
-"let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
-
-" For perlomni.vim setting.
-" https://github.com/c9s/perlomni.vim
-let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
-
-" NEOSNIPPET
-" Plugin key-mappings.
-imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-xmap <C-k>     <Plug>(neosnippet_expand_target)
-
-" SuperTab like snippets behavior.
-imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-\ "\<Plug>(neosnippet_expand_or_jump)"
-\: pumvisible() ? "\<C-n>" : "\<TAB>"
-smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-\ "\<Plug>(neosnippet_expand_or_jump)"
-\: "\<TAB>"
-
-" For snippet_complete marker.
-if has('conceal')
-  set conceallevel=2 concealcursor=i
-endif
+""------------------------------------------------------------
+"" NeoComplete and NeoSnippet Settings
+"" NEOCOMPLETE
+""Note: This option must set it in .vimrc(_vimrc).  NOT IN .gvimrc(_gvimrc)!
+"" Disable AutoComplPop.
+"let g:acp_enableAtStartup = 0
+"" Use neocomplete.
+"let g:neocomplete#enable_at_startup = 1
+"" Use smartcase.
+"let g:neocomplete#enable_smart_case = 1
+"" Set minimum syntax keyword length.
+"let g:neocomplete#sources#syntax#min_keyword_length = 3
+"let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
+"
+"" Define dictionary.
+"let g:neocomplete#sources#dictionary#dictionaries = {
+"    \ 'default' : '',
+"    \ 'vimshell' : $HOME.'/.vimshell_hist',
+"    \ 'scheme' : $HOME.'/.gosh_completions'
+"        \ }
+"
+"" Define keyword.
+"if !exists('g:neocomplete#keyword_patterns')
+"    let g:neocomplete#keyword_patterns = {}
+"endif
+"let g:neocomplete#keyword_patterns['default'] = '\h\w*'
+"
+"" Plugin key-mappings.
+"inoremap <expr><C-g>     neocomplete#undo_completion()
+"inoremap <expr><C-l>     neocomplete#complete_common_string()
+"
+"" Recommended key-mappings.
+"" <CR>: close popup and save indent.
+"inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+"function! s:my_cr_function()
+"  return neocomplete#close_popup() . "\<CR>"
+"  " For no inserting <CR> key.
+"  "return pumvisible() ? neocomplete#close_popup() : "\<CR>"
+"endfunction
+"" <TAB>: completion.
+"inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+"" <C-h>, <BS>: close popup and delete backword char.
+"inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
+"inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
+"inoremap <expr><C-y>  neocomplete#close_popup()
+"inoremap <expr><C-e>  neocomplete#cancel_popup()
+"" Close popup by <Space>.
+""inoremap <expr><Space> pumvisible() ? neocomplete#close_popup() : "\<Space>"
+"
+"" For cursor moving in insert mode(Not recommended)
+""inoremap <expr><Left>  neocomplete#close_popup() . "\<Left>"
+""inoremap <expr><Right> neocomplete#close_popup() . "\<Right>"
+""inoremap <expr><Up>    neocomplete#close_popup() . "\<Up>"
+""inoremap <expr><Down>  neocomplete#close_popup() . "\<Down>"
+"" Or set this.
+""let g:neocomplete#enable_cursor_hold_i = 1
+"" Or set this.
+""let g:neocomplete#enable_insert_char_pre = 1
+"
+"" AutoComplPop like behavior.
+""let g:neocomplete#enable_auto_select = 1
+"
+"" Shell like behavior(not recommended).
+""set completeopt+=longest
+""let g:neocomplete#enable_auto_select = 1
+""let g:neocomplete#disable_auto_complete = 1
+""inoremap <expr><TAB>  pumvisible() ? "\<Down>" : "\<C-x>\<C-u>"
+"
+"" Enable omni completion.
+"autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+"autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+"autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+"autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+"autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+"
+"" Enable heavy omni completion.
+"if !exists('g:neocomplete#sources#omni#input_patterns')
+"  let g:neocomplete#sources#omni#input_patterns = {}
+"endif
+""let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
+""let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
+""let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+"
+"" For perlomni.vim setting.
+"" https://github.com/c9s/perlomni.vim
+"let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
+"
+"" NEOSNIPPET
+"" Plugin key-mappings.
+"imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+"smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+"xmap <C-k>     <Plug>(neosnippet_expand_target)
+"
+"" SuperTab like snippets behavior.
+"imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+"\ "\<Plug>(neosnippet_expand_or_jump)"
+"\: pumvisible() ? "\<C-n>" : "\<TAB>"
+"smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+"\ "\<Plug>(neosnippet_expand_or_jump)"
+"\: "\<TAB>"
+"
+"" For snippet_complete marker.
+"if has('conceal')
+"  set conceallevel=2 concealcursor=i
+"endif
 
 "------------------------------------------------------------
