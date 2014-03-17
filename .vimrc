@@ -72,6 +72,8 @@ NeoBundle 'Shougo/vimproc', {
             \    },
             \ }
 NeoBundle 'Shougo/unite.vim'
+NeoBundle 'xolox/vim-misc'
+NeoBundle 'xolox/vim-easytags'
 
 " autocompleters
 if v:version < 703
