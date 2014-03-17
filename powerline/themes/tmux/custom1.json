@@ -29,7 +29,7 @@
             "priority": 50,
             "args": {
                 "unit": "F",
-                "location_query": "berkeley, california"
+                "location_query": "berkeley, california, USA"
             }
         },
         {
