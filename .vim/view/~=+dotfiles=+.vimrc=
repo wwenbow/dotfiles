@@ -112,14 +112,14 @@ setlocal nowinfixheight
 setlocal winfixwidth
 setlocal wrap
 setlocal wrapmargin=0
-313
+328
 normal! zo
-let s:l = 318 - ((313 * winheight(0) + 21) / 42)
+let s:l = 335 - ((327 * winheight(0) + 21) / 42)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-318
-normal! 042|
+335
+normal! 038|
 lcd ~/dotfiles
 let &so = s:so_save | let &siso = s:siso_save
 doautoall SessionLoadPost
