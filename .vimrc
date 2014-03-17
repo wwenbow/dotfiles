@@ -61,7 +61,6 @@ NeoBundle 'scrooloose/syntastic'
 NeoBundle 'sjl/gundo.vim'
 NeoBundle 'altercation/vim-colors-solarized'
 NeoBundle 'bling/vim-airline'
-NeoBundle 'Shougo/unite.vim'
 NeoBundle 'terryma/vim-multiple-cursors'
 NeoBundle 'kien/ctrlp.vim'
 NeoBundle 'Shougo/vimproc', {
@@ -72,6 +71,7 @@ NeoBundle 'Shougo/vimproc', {
             \     'unix' : 'make -f make_unix.mak',
             \    },
             \ }
+NeoBundle 'Shougo/unite.vim'
 
 " autocompleters
 if v:version < 703
@@ -96,12 +96,6 @@ endif
 NeoBundle 'git://git.code.sf.net/p/vim-latex/vim-latex'
 "
 " scripts from http://vim-scripts.org/vim/scripts.html
-"
-" snipMate
-"Bundle 'MarcWeber/vim-addon-mw-utils'
-"Bundle 'tomtom/tlib_vim'
-"Bundle 'garbas/vim-snipmate'
-"Bundle 'honza/vim-snippets'
 
 filetype plugin indent on     " required!
 
@@ -337,5 +331,9 @@ if v:version < 703
     source ~/.vim/plugin_settings/neocomplcache.vim
 elseif has('win32') | has('win64')
     source ~/.vim/plugin_settings/neocomplete.vim
+else
+    let g:UltiSnipsExpandTrigger="<c-k>"
+    let g:UltiSnipsJumpForwardTrigger="<c-b>"
+    let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 endif 
 "---------------------------------------------------------------------------}}}
