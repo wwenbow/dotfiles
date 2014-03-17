@@ -132,8 +132,9 @@ filetype indent plugin on
 
 " Enable syntax highlighting
 syntax on
+autocmd! BufNewFile,BufRead *.pde setlocal ft=arduino
 
-" Copy your ubuntu clipboard
+" Copy ubuntu clipboard
 if ("unix")
     set clipboard=unnamedplus
 else 
@@ -332,6 +333,7 @@ if v:version < 703
 elseif has('win32') | has('win64')
     source ~/.vim/plugin_settings/neocomplete.vim
 else
+    let g:ycm_collect_identifiers_from_tags_files = 1
     let g:UltiSnipsExpandTrigger="<c-j>"
     let g:UltiSnipsJumpForwardTrigger="<c-j>"
     let g:UltiSnipsJumpBackwardTrigger="<c-k>"
