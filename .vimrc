@@ -9,7 +9,7 @@
 " have made, as well as sanely reset options when re-sourcing .vimrc
 set nocompatible
 
-" NeoBundle Settings
+" NeoBundle Settings {{{
 "
 " Setting up NeoBundle - the vim plugin bundler
 
@@ -74,6 +74,7 @@ NeoBundle 'Valloric/YouCompleteMe' , {
             \    },
             \ }
 NeoBundle 'SirVer/ultisnips'
+NeoBundle 'honza/vim-snippets'
 NeoBundle 'kien/ctrlp.vim'
 "NeoBundle 'Shougo/neosnippet.vim'
 "NeoBundle 'Shougo/neosnippet-snippets'
@@ -101,8 +102,9 @@ if iCanHazNeoBundle == 0
 endif
 " Setting up NeoBundle - the vim plugin bundler end
 
+" }}}
 "------------------------------------------------------------------------------
-" color scheme
+" color scheme {{{
 set background=dark
 colorscheme solarized
 set t_Co=256
@@ -115,6 +117,7 @@ if has("gui_running")
   endif
 endif
 
+" }}}
 "------------------------------------------------------------------------------
 " Features {{{1
 "
@@ -168,8 +171,9 @@ endfunction
 " Auto remove trailing whitespace
 autocmd BufWritePre *.cu :%s/\s\+$//e
 
+" }}}
 "------------------------------------------------------------
-" Must have options
+" Must have options {{{
 "
 set hidden
 " Better command-line completion
@@ -179,8 +183,9 @@ set showcmd
 " Highlight searches 
 set hlsearch
 
+" }}}
 "------------------------------------------------------------
-" Usability options
+" Usability options {{{
 "
 " Use case insensitive search, except when using capital letters
 set ignorecase
@@ -218,9 +223,11 @@ set splitbelow
 set splitright
 " minibuffexplorer split on top
 "let g:miniBufExplBRSplit=0
+"
+" }}}
 
 "------------------------------------------------------------
-" Indentation options
+" Indentation options {{{
 "
 " Indentation settings for using 2 spaces instead of tabs.
 " Do not change 'tabstop' from its default value of 8 with this setup.
@@ -236,8 +243,10 @@ set cinkeys-=0#
 " cs267 2 tabs
 autocmd BufRead */cs_267/homewor*/*.c* :set shiftwidth=2 softtabstop=2
 
+" }}}
+
 "------------------------------------------------------------
-" Mappings 
+" Mappings {{{
 "
 " Map Y to act like D and C, i.e. to yank until EOL, rather than act as yy,
 map Y y$
@@ -264,8 +273,10 @@ noremap <C-K>     <C-W>k
 noremap <C-H>     <C-W>h
 noremap <C-L>     <C-W>l
 
+" }}}
+
 "------------------------------------------------------------
-" Vim-Latex Settings
+" Vim-Latex Settings {{{
 "
 " REQUIRED. This makes vim invoke Latex-Suite when you open a tex file.
 filetype plugin on
@@ -289,13 +300,15 @@ let g:tex_flavor='latex'
 let g:Tex_DefaultTargetFormat='pdf'
 let g:Tex_UseMakefile=0
 
+" }}}
+
 "------------------------------------------------------------
-" Airline
+" Airline {{{
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 
-""------------------------------------------------------------
-"" NeoComplete and NeoSnippet Settings
+""------------------------------------------------------------ }}}
+"" NeoComplete and NeoSnippet Settings {{{
 "" NEOCOMPLETE
 ""Note: This option must set it in .vimrc(_vimrc).  NOT IN .gvimrc(_gvimrc)!
 "" Disable AutoComplPop.
@@ -399,5 +412,6 @@ let g:airline#extensions#tabline#enabled = 1
 "if has('conceal')
 "  set conceallevel=2 concealcursor=i
 "endif
+" }}}
 
 "------------------------------------------------------------
