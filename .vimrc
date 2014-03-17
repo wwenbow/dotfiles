@@ -45,6 +45,8 @@ else
 	call neobundle#rc(expand(path))
 endif
 
+"--------------------------------------------------------------------------}}}
+" Bundles {{{
 " let NeoBundle manage NeoBundle
 " required! 
 NeoBundleFetch 'Shougo/neobundle.vim'
@@ -80,6 +82,7 @@ elseif has('win32') | has('win64')
     NeoBundle 'Shougo/neocomplete.vim'
     NeoBundle 'Shougo/neosnippet.vim'
     NeoBundle 'Shougo/neosnippet-snippets'
+    NeoBundle 'Shougo/echodoc.vim'
 else 
     NeoBundle 'Valloric/YouCompleteMe' , {
                 \ 'build' : {
@@ -336,6 +339,7 @@ if v:version < 703
 elseif has('win32') | has('win64')
     source ~/.vim/plugin_settings/neocomplete.vim
     source ~/.vim/plugin_settings/neosnippet.vim
+    let g:echodoc_enable_at_startup = 1
 else
     let g:ycm_collect_identifiers_from_tags_files = 1
     let g:UltiSnipsExpandTrigger="<c-j>"
