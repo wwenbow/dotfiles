@@ -332,8 +332,10 @@ endfunction
 " Autocompleter 
 if v:version < 703 
     source ~/.vim/plugin_settings/neocomplcache.vim
+    source ~/.vim/plugin_settings/neosnippet.vim
 elseif has('win32') | has('win64')
     source ~/.vim/plugin_settings/neocomplete.vim
+    source ~/.vim/plugin_settings/neosnippet.vim
 else
     let g:ycm_collect_identifiers_from_tags_files = 1
     let g:UltiSnipsExpandTrigger="<c-j>"
