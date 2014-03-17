@@ -332,8 +332,8 @@ if v:version < 703
 elseif has('win32') | has('win64')
     source ~/.vim/plugin_settings/neocomplete.vim
 else
-    let g:UltiSnipsExpandTrigger="<c-k>"
-    let g:UltiSnipsJumpForwardTrigger="<c-b>"
-    let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+    let g:UltiSnipsExpandTrigger="<c-j>"
+    let g:UltiSnipsJumpForwardTrigger="<c-j>"
+    let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 endif 
 "---------------------------------------------------------------------------}}}
