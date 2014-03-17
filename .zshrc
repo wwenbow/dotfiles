@@ -37,6 +37,7 @@ source $ZSH/oh-my-zsh.sh
 # User configuration
 
 export PATH="/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/jvm/java-7-oracle/bin:/usr/lib/jvm/java-7-oracle/db/bin:/usr/lib/jvm/java-7-oracle/jre/bin"
+export PATH="$HOME/.local/lib/python2.7/site-packages/powerline:$HOME/.local/bin:$PATH"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # # Preferred editor for local and remote sessions
