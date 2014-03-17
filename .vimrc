@@ -11,8 +11,6 @@ set nocompatible
 
 " Fold vimrc
 set fdm=marker
-autocmd BufWinLeave .vimrc mkview
-autocmd BufWinEnter .vimrc silent loadview 
 
 " NeoBundle Settings {{{
 " Setting up NeoBundle - the vim plugin bundler
