@@ -102,7 +102,7 @@ NeoBundleCheck
 if iCanHazNeoBundle == 0
     echo "Installing Bundles, please ignore key map error messages"
     echo ""
-    :NeoBundleInstall
+    NeoBundleInstall
 endif
 " Setting up NeoBundle - the vim plugin bundler end
 
@@ -113,11 +113,13 @@ colorscheme solarized
 set t_Co=256
 " font
 if has("gui_running")
-  if has("gui_macvim")
-    set guifont=Menlo\ Regular:h14
-  elseif has("gui_win32")
-    set guifont=Consolas:h11:cANSI
-  endif
+    if has("gui_macvim")
+        set guifont=Menlo\ Regular:h14
+    elseif has("gui_win32")
+        set guifont=Consolas:h11:cANSI
+    elseif has("gui_gtk2")
+        set guifont=Ubuntu\ Mono\ derivative\ Powerline h11 
+    endif
 endif
 
 "---------------------------------------------------------------------------}}}
@@ -143,7 +145,9 @@ endif
 set omnifunc=syntaxcomplete#Complete
 
 " Highlight column 80, page border
-set colorcolumn=80
+if v:version >= 703
+    set colorcolumn=80
+endif
 
 " Wrap text at column 79
 " set tw=79
