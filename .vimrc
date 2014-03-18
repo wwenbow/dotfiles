@@ -112,7 +112,7 @@ endif
 " Setting up NeoBundle - the vim plugin bundler end
 
 "---------------------------------------------------------------------------}}}
-" Colorscheme {{{
+" Colorscheme and Fonts {{{
 set background=dark
 colorscheme solarized
 set t_Co=256
@@ -123,7 +123,7 @@ if has("gui_running")
     elseif has("gui_win32")
         set guifont=Consolas:h11:cANSI
     elseif has("gui_gtk2")
-        set guifont=Ubuntu\ Mono\ derivative\ Powerline h11 
+        set guifont=Ubuntu\ Mono\ derivative\ Powerline\ 11 
     endif
 endif
 

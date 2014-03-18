@@ -1,3 +1,8 @@
+# ZSHRC
+# wenbo wang
+#
+#
+# Oh My Zsh {{{
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
 
@@ -34,11 +39,15 @@ plugins=(git python command-not-found compleat zsh-syntax-highlighting history-s
 
 source $ZSH/oh-my-zsh.sh
 
-# User configuration
+#---------------------------------------------------------------------------}}}
+# User configuration {{{
 
-export PATH="/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/jvm/java-7-oracle/bin:/usr/lib/jvm/java-7-oracle/db/bin:/usr/lib/jvm/java-7-oracle/jre/bin"
+export PATH="/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:\
+    /usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:\
+    /usr/lib/jvm/java-7-oracle/bin:/usr/lib/jvm/java-7-oracle/db/bin:\
+    /usr/lib/jvm/java-7-oracle/jre/bin"
 export PATH="$HOME/.local/lib/python2.7/site-packages/powerline:$HOME/.local/bin:$PATH"
-# export MANPATH="/usr/local/man:$MANPATH"
+export MANPATH="/usr/local/man:$MANPATH"
 
 # # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
@@ -52,13 +61,13 @@ export PATH="$HOME/.local/lib/python2.7/site-packages/powerline:$HOME/.local/bin
 
 # ssh
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
-
-# colors
+#---------------------------------------------------------------------------}}}
+# Colors {{{
 export TERM=xterm-256color
 eval "$(dircolors ~/.dir_colors)"
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
-
-# aliases
+#---------------------------------------------------------------------------}}}
+# Aliases {{{
 alias ls='ls -XF --color=auto --group-directories-first'
 alias la='ls -A'
 alias grep='grep --color=auto'
@@ -74,3 +83,7 @@ alias mkdir='mkdir -pv'
 alias cd..='cd ..'
 alias g='xdg-open'
 alias ln='ln -v'
+#---------------------------------------------------------------------------}}}
+# Start Tmux automatically
+[[ $- != *i* ]] && return
+[[ -z "$TMUX" ]] && exec tmux
