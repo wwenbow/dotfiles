@@ -1,0 +1,39 @@
+{
+    "default_module": "powerline.segments.common",
+    "segment_data": {
+        "uptime": {
+            "before": "⇑  "
+        },
+        "date": {
+            "before": "⌚ "
+        }
+    },
+    "segments": {
+        "right": [
+        {
+            "name": "date"
+        },
+        {
+            "name": "date",
+            "args": {
+                "format": "%H:%M",
+                "istime": true
+            }
+        },
+        {
+            "name": "weather",
+            "priority": 50,
+            "args": {
+                "unit": "F",
+                "location_query": "berkeley, california, USA"
+            }
+        },
+        {
+            "name": "hostname",
+            "args": {
+                "only_if_ssh": true
+            }
+        }
+        ]
+    }
+}
