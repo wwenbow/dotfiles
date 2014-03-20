@@ -352,41 +352,12 @@ if v:version < 703
     source ~/.vim/plugin_settings/neosnippet.vim
 elseif has('win32') || has('win64')
     source ~/vimfiles/plugin_settings/neocomplete.vim
+    source ~/vimfiles/plugin_settings/vim-marching.vim
+    source ~/vimfiles/plugin_settings/jedi-vim.vim
+    source ~/vimfiles/plugin_settings/ultisnips.vim
     let g:echodoc_enable_at_startup = 1
-
-    let g:UltiSnipsExpandTrigger="<c-j>"
-    let g:UltiSnipsJumpForwardTrigger="<c-j>"
-    let g:UltiSnipsJumpBackwardTrigger="<c-k>"
-
-    " path to clang command
-    let g:marching_clang_command = "C:/clang.exe"
-    " directory paths to include
-    let g:marching_include_paths = [
-	\	"C:/MinGW/lib/gcc/mingw32/4.6.2/include/c++"
-	\]
-    let g:marching_clang_command_option="-std=c++1y"
-    " cooperate with neocomplete.vim
-    let g:marching_enable_neocomplete = 1
-    if !exists('g:neocomplete#force_omni_input_patterns')
-        let g:neocomplete#force_omni_input_patterns = {}
-    endif
-    let g:neocomplete#force_omni_input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
-    let g:neocomplete#force_omni_input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
-    let g:neocomplete#force_omni_input_patterns.cpp =
-                \ '[^.[:digit:] *\t]\%(\.\|->\)\w*\|\h\w*::\w*'   
-    imap <buffer> <C-x><C-o> <Plug>(marching_start_omni_complete)
-
-    autocmd FileType python setlocal omnifunc=jedi#completions
-	let g:jedi#completions_enabled = 0
-	let g:jedi#auto_vim_configuration = 0
-	let g:neocomplete#force_omni_input_patterns.python =
-	\ '\%([^. \t]\.\|^\s*@\|^\s*from\s.\+import \|^\s*from \|^\s*import \)\w*'
 else
-    let g:ycm_collect_identifiers_from_tags_files = 1
-    let g:ycm_seed_identifiers_with_syntax = 1
-    let g:ycm_autoclose_preview_window_after_insertion = 1
-    let g:UltiSnipsExpandTrigger="<c-j>"
-    let g:UltiSnipsJumpForwardTrigger="<c-j>"
-    let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+    source ~/vimfiles/plugin_settings/ycm.vim
+    source ~/vimfiles/plugin_settings/ultisnips.vim
 endif 
 "---------------------------------------------------------------------------}}}
