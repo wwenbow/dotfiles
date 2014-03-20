@@ -144,7 +144,6 @@ filetype indent plugin on
 
 " Enable syntax highlighting
 syntax on
-autocmd! BufNewFile,BufRead *.pde setlocal ft=arduino
 
 " Copy ubuntu clipboard
 if ("unix")
