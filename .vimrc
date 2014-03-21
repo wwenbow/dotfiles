@@ -357,7 +357,7 @@ elseif has('win32') || has('win64')
     source ~/vimfiles/plugin_settings/ultisnips.vim
     let g:echodoc_enable_at_startup = 1
 else
-    source ~/vimfiles/plugin_settings/ycm.vim
-    source ~/vimfiles/plugin_settings/ultisnips.vim
+    source ~/.vim/plugin_settings/ycm.vim
+    source ~/.vim/plugin_settings/ultisnips.vim
 endif 
 "---------------------------------------------------------------------------}}}
