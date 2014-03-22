@@ -84,6 +84,10 @@ alias cd..='cd ..'
 alias g='xdg-open'
 alias ln='ln -v'
 #---------------------------------------------------------------------------}}}
-# Start Tmux automatically
+# Start Tmux automatically {{{
 [[ $- != *i* ]] && return
 [[ -z "$TMUX" ]] && exec tmux
+#---------------------------------------------------------------------------}}}
+# Fzf source
+source ~/.fzf.zsh
+

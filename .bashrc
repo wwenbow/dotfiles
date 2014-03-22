@@ -119,3 +119,4 @@ fi
 
 export PYTHONPATH=/home/wenbo/Development/liblinear-1.94/python/
 
+source ~/.fzf.bash
