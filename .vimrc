@@ -142,8 +142,7 @@ endif
 " and for plugins that are filetype specific.
 filetype indent plugin on
 
-" Enable syntax highlighting
-syntax on
+syntax on "Enable syntax highlighting
 
 " Copy ubuntu clipboard
 if ("unix")
@@ -152,16 +151,14 @@ else
     set clipboard=unnamed
 endif
 
-" Omni completion
-set omnifunc=syntaxcomplete#Complete
+set omnifunc=syntaxcomplete#Complete "Omni completion
 
-" Highlight column 80, page border
 if v:version >= 703
-    set colorcolumn=80
+    set colorcolumn=80 "Highlight column 80, page border
 endif
 
-" Wrap text at column 79
-" set tw=79
+"set tw=79 " Wrap text at column 79
+set nowrap
 
 " Highlight all instances of word under cursor, when idle.
 " Useful when studying strange source code.
@@ -309,6 +306,8 @@ filetype indent on
 let g:tex_flavor='latex'
 let g:Tex_DefaultTargetFormat='pdf'
 let g:Tex_UseMakefile=0
+let g:Tex_BibtexFlavor='bibtex8 -H'
+"let g:Tex_BibtexFlavor='biber'
 let g:Tex_MultipleCompileFormats='dvi,pdf'
 
 "---------------------------------------------------------------------------}}}
