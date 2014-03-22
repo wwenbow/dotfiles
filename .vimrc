@@ -145,7 +145,7 @@ filetype indent plugin on
 syntax on "Enable syntax highlighting
 
 " Copy ubuntu clipboard
-if ("unix")
+if has("unix")
     set clipboard=unnamedplus
 else 
     set clipboard=unnamed
