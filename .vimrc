@@ -277,10 +277,10 @@ nnoremap <M-8> :8b<CR>
 nnoremap <M-9> :9b<CR>
 nnoremap <M-0> :10b<CR>
 " Switch windows using ctrl+hjkl
-noremap <C-J>     <C-W>j
-noremap <C-K>     <C-W>k
-noremap <C-H>     <C-W>h
-noremap <C-L>     <C-W>l
+noremap <C-Down>     <C-W>j
+noremap <C-Up>       <C-W>k
+noremap <C-Left>     <C-W>h
+noremap <C-Right>    <C-W>l
 
 "---------------------------------------------------------------------------}}}
 " Vim-Latex Settings {{{
