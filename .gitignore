@@ -1,2 +1,4 @@
 .vim/bundle/
 .oh-my-zsh/
+*.swp
+*.swo
