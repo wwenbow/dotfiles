@@ -346,6 +346,7 @@ endfunction
 
 "---------------------------------------------------------------------------}}}
 " External Plugin Settings {{{
+source ~/dotfiles/.vim/plugin_settings/easytags.vim
 " Autocompleter 
 if v:version < 703 
     source ~/.vim/plugin_settings/neocomplcache.vim
@@ -361,3 +362,5 @@ else
     source ~/.vim/plugin_settings/ultisnips.vim
 endif 
 "---------------------------------------------------------------------------}}}
+"Local Machine Settings
+source ~/.vimrc.local
