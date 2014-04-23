@@ -363,4 +363,6 @@ else
 endif 
 "---------------------------------------------------------------------------}}}
 "Local Machine Settings
-source ~/.vimrc.local
+if filereadable('.vimrc.local')
+    source ~/.vimrc.local
+endif

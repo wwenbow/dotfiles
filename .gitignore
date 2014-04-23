@@ -2,3 +2,4 @@
 .oh-my-zsh/
 *.swp
 *.swo
+*.pyc
