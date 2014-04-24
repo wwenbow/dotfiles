@@ -2,13 +2,13 @@
 # ------------------
 unalias fzf 2> /dev/null
 fzf() {
-  /usr/bin/ruby --disable-gems /home/wenbo/Development/fzf/fzf "$@"
+  /usr/bin/ruby --disable-gems /home/wenbo/.fzf/fzf "$@"
 }
 export -f fzf > /dev/null
 
 # Auto-completion
 # ---------------
-source /home/wenbo/Development/fzf/fzf-completion.zsh
+source /home/wenbo/.fzf/fzf-completion.zsh
 
 # Key bindings
 # ------------
