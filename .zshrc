@@ -2,6 +2,13 @@
 # wenbo wang
 #
 #
+platform='unknown'
+unamestr=`uname`
+if [[ "$unamestr" == 'Linux' ]]; then
+   platform='linux'
+elif [[ "$unamestr" == 'FreeBSD' ]]; then
+   platform='freebsd'
+fi
 # Oh My Zsh {{{
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
@@ -68,21 +75,9 @@ eval "$(dircolors ~/.dir_colors)"
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 #---------------------------------------------------------------------------}}}
 # Aliases {{{
-alias ls='ls -XF --color=auto --group-directories-first'
-alias la='ls -A'
-alias grep='grep --color=auto'
-alias fgrep='fgrep --color=auto'
-alias egrep='egrep --color=auto'
-alias rm='rm -vfr'
-alias cp='cp -ivR'
-alias mv='mv -iv'
-alias du='du -ch'
-alias df='df -H'
-alias bc='bc -l'
-alias mkdir='mkdir -pv'
-alias cd..='cd ..'
-alias g='xdg-open'
-alias ln='ln -v'
+if [[ $platform == 'linux' ]]; then
+    source ~/.linuxaliases
+fi
 #---------------------------------------------------------------------------}}}
 # Start Tmux automatically {{{
 [[ $- != *i* ]] && return
