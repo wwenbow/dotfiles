@@ -61,7 +61,7 @@ endif
 let g:is_exuberant = 1
 
 " Overrides
-if filereadable('~/.vimrc.local')
+if filereadable(expand('~/.vimrc.local'))
     source ~/.vimrc.local
 endif
 
@@ -385,6 +385,6 @@ elseif s:autocompleter == 'ycm'
 endif 
 "---------------------------------------------------------------------------}}}
 "Local Machine Settings
-if filereadable('~/.vimrc.local')
+if filereadable(expand('~/.vimrc.local'))
     source ~/.vimrc.local
 endif
