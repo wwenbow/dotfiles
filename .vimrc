@@ -49,6 +49,22 @@ endif
 " Bundles {{{
 " let NeoBundle manage NeoBundle
 " required! 
+
+" Choose autocompleter
+if v:version <= 703
+    let s:autocompleter = 'old'
+elseif has('win32') || has('win64')
+    let s:autocompleter = 'neo'
+else 
+    let s:autocompleter = 'ycm'
+endif
+let g:is_exuberant = 1
+
+" Overrides
+if filereadable('~/.vimrc.local')
+    source ~/.vimrc.local
+endif
+
 NeoBundleFetch 'Shougo/neobundle.vim'
 
 " My bundles here:
@@ -75,15 +91,18 @@ NeoBundle 'Shougo/vimproc', {
             \ }
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'xolox/vim-misc'
-NeoBundle 'xolox/vim-easytags'
 NeoBundle "mattn/emmet-vim"
 
+if g:is_exuberant
+    NeoBundle 'xolox/vim-easytags'
+endif
+
 " autocompleters
-if v:version < 703
+if s:autocompleter == 'old'
     NeoBundle 'Shougo/neocomplcache.vim'
     NeoBundle 'Shougo/neosnippet.vim'
     NeoBundle 'Shougo/neosnippet-snippets'
-elseif has('win32') || has('win64')
+elseif s:autocompleter == 'neo'
     NeoBundle 'Shougo/neocomplete.vim'
     "NeoBundle 'Shougo/neosnippet.vim'
     "NeoBundle 'Shougo/neosnippet-snippets'
@@ -93,7 +112,7 @@ elseif has('win32') || has('win64')
     NeoBundle 'davidhalter/jedi-vim'
     NeoBundle 'osyo-manga/vim-reunions'
     NeoBundle 'osyo-manga/vim-marching'
-else 
+elseif s:autocompleter == 'ycm'
     NeoBundle 'Valloric/YouCompleteMe' , {
                 \ 'build' : {
                 \    'unix' : './install.sh --clang-completer'
@@ -347,23 +366,25 @@ endfunction
 
 "---------------------------------------------------------------------------}}}
 " External Plugin Settings {{{
-source ~/dotfiles/.vim/plugin_settings/easytags.vim
+if g:is_exuberant
+    source ~/dotfiles/.vim/plugin_settings/easytags.vim
+endif
 " Autocompleter 
-if v:version < 703 
+if s:autocompleter == 'old'
     source ~/.vim/plugin_settings/neocomplcache.vim
     source ~/.vim/plugin_settings/neosnippet.vim
-elseif has('win32') || has('win64')
+elseif s:autocompleter == 'neo'
     source ~/vimfiles/plugin_settings/neocomplete.vim
     source ~/vimfiles/plugin_settings/vim-marching.vim
     source ~/vimfiles/plugin_settings/jedi-vim.vim
     source ~/vimfiles/plugin_settings/ultisnips.vim
     let g:echodoc_enable_at_startup = 1
-else
+elseif s:autocompleter == 'ycm'
     source ~/.vim/plugin_settings/ycm.vim
     source ~/.vim/plugin_settings/ultisnips.vim
 endif 
 "---------------------------------------------------------------------------}}}
 "Local Machine Settings
-if filereadable('.vimrc.local')
+if filereadable('~/.vimrc.local')
     source ~/.vimrc.local
 endif
