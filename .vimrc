@@ -91,7 +91,8 @@ NeoBundle 'Shougo/vimproc', {
             \ }
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'xolox/vim-misc'
-NeoBundle "mattn/emmet-vim"
+NeoBundle 'mattn/emmet-vim'
+NeoBundle 'tmhedberg/matchit'
 
 if g:is_exuberant
     NeoBundle 'xolox/vim-easytags'
