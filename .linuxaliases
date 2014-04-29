@@ -13,4 +13,4 @@ alias mkdir='mkdir -pv'
 alias cd..='cd ..'
 alias g='xdg-open'
 alias ln='ln -v'
-alias xclip="xclip -selection c"
+alias xclip="xclip -sel clip"
