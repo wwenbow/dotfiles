@@ -205,7 +205,7 @@ function! AutoHighlightToggle()
 endfunction
 
 " Auto remove trailing whitespace
-autocmd BufWritePre *.cu :%s/\s\+$//e
+autocmd BufWritePre * :%s/\s\+$//e
 
 "---------------------------------------------------------------------------}}}
 " Must have options {{{
