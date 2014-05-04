@@ -1,0 +1,8 @@
+zsh
+git
+cmake
+build-essential
+python-dev
+python-pip
+exuberant-ctags
+tmux

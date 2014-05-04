@@ -1,5 +1,5 @@
 " path to clang command
-let g:marching_clang_command = "C:/clang.exe"
+let g:marching_clang_command = "C:/LLVM/bin/clang.exe"
 
 " directory paths to include
 let g:marching_include_paths = [

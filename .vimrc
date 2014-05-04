@@ -17,7 +17,7 @@ set fdm=marker
 
 let iCanHazNeoBundle=1
 if has('win32') || has('win64')
-	let neobundle_readme=expand('~/vimfiles/bundle/neobundle.vim/README.md')
+	let neobundle_readme=expand('$HOME/vimfiles/bundle/neobundle.vim/README.md')
 else
 	let neobundle_readme=expand('~/.vim/bundle/neobundle.vim/README.md')
 endif
@@ -26,8 +26,8 @@ if !filereadable(neobundle_readme)
     echo "Installing neobundle.."
     echo ""
     if has('win32') || has('win64')
-        silent !mkdir -p ~/vimfiles/bundle
-        silent !git clone https://github.com/Shougo/neobundle.vim ~/vimfiles/bundle/neobundle.vim
+        silent !mkdir \%HOMEPATH\%\vimfiles\bundle
+        silent !git clone https://github.com/Shougo/neobundle.vim \%HOMEPATH\%\vimfiles\bundle\neobundle.vim
     else
         silent !mkdir -p ~/.vim/bundle
         silent !git clone https://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
@@ -205,7 +205,7 @@ function! AutoHighlightToggle()
 endfunction
 
 " Auto remove trailing whitespace
-autocmd BufWritePre *.cu :%s/\s\+$//e
+autocmd BufWritePre * :%s/\s\+$//e
 
 "---------------------------------------------------------------------------}}}
 " Must have options {{{
