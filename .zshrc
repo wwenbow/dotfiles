@@ -34,7 +34,7 @@ ZSH_THEME="agnoster-old"
 # much faster.
 # DISABLE_UNTRACKED_FILES_DIRTY="true"
 
-# Uncomment following line if you want to  shown in the command execution time stamp 
+# Uncomment following line if you want to  shown in the command execution time stamp
 # in the history command output. The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|
 # yyyy-mm-dd
 # HIST_STAMPS="mm/dd/yyyy"
@@ -49,13 +49,6 @@ source $ZSH/oh-my-zsh.sh
 #---------------------------------------------------------------------------}}}
 # User configuration {{{
 
-export PATH="/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:\
-    /usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:\
-    /usr/lib/jvm/java-7-oracle/bin:/usr/lib/jvm/java-7-oracle/db/bin:\
-    /usr/lib/jvm/java-7-oracle/jre/bin"
-export PATH="$HOME/.local/lib/python2.7/site-packages/powerline:$HOME/.local/bin:$PATH"
-export MANPATH="/usr/local/man:$MANPATH"
-
 # # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
 #   export EDITOR='vim'
@@ -68,6 +61,22 @@ export MANPATH="/usr/local/man:$MANPATH"
 
 # ssh
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
+
+#---------------------------------------------------------------------------}}}
+# Environment Variables {{{
+export PATH="/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:\
+    /usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:\
+    /usr/lib/jvm/java-7-oracle/bin:/usr/lib/jvm/java-7-oracle/db/bin:\
+    /usr/lib/jvm/java-7-oracle/jre/bin:$PATH"
+export PATH="$HOME/.local/lib/python2.7/site-packages/powerline:$HOME/.local/bin:$PATH"
+export PATH="/usr/local/MATLAB/R2013a/bin:$PATH"
+export MANPATH="/usr/local/man:$MANPATH"
+
+# set PATH so it includes user's private bin if it exists
+if [ -d "$HOME/bin" ] ; then
+    export PATH="$HOME/bin:$PATH"
+fi
+
 #---------------------------------------------------------------------------}}}
 # Colors {{{
 export TERM=xterm-256color
