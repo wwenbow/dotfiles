@@ -95,8 +95,8 @@ elif [[ $platform == 'osx' ]]; then
 fi
 #---------------------------------------------------------------------------}}}
 # Start Tmux automatically {{{
-[[ $- != *i* ]] && return
-[[ -z "$TMUX" ]] && exec tmux
+#[[ $- != *i* ]] && return
+#[[ -z "$TMUX" ]] && exec tmux
 #---------------------------------------------------------------------------}}}
 # Fzf source
 source ~/.fzf.zsh
