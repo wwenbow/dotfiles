@@ -148,7 +148,7 @@ set t_Co=256
 " font
 if has("gui_running")
     if has("gui_macvim")
-        set guifont=Menlo\ Regular:h14
+        set guifont=Inconsolata-dz\ for\ Powerline:h12
     elseif has("gui_win32")
         set guifont=Consolas:h11:cANSI
     elseif has("gui_gtk2")
