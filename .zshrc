@@ -6,8 +6,8 @@ platform='unknown'
 unamestr=`uname`
 if [[ "$unamestr" == 'Linux' ]]; then
    platform='linux'
-elif [[ "$unamestr" == 'FreeBSD' ]]; then
-   platform='freebsd'
+elif [[ "$unamestr" == 'Darwin' ]]; then
+   platform='osx'
 fi
 # Oh My Zsh {{{
 # Path to your oh-my-zsh configuration.
@@ -80,12 +80,18 @@ fi
 #---------------------------------------------------------------------------}}}
 # Colors {{{
 export TERM=xterm-256color
-eval "$(dircolors ~/.dir_colors)"
+if [[ $platform == 'linux' ]]; then
+    eval "$(dircolors ~/.dir_colors)"
+elif [[ $platform == 'osx' ]]; then
+    eval "$(gdircolors ~/.dir_colors)"
+fi
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 #---------------------------------------------------------------------------}}}
 # Aliases {{{
 if [[ $platform == 'linux' ]]; then
     source ~/.linuxaliases
+elif [[ $platform == 'osx' ]]; then
+    source ~/.osxaliases
 fi
 #---------------------------------------------------------------------------}}}
 # Start Tmux automatically {{{
