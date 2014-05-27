@@ -4,7 +4,7 @@
 "              newbie, basing your first .vimrc on this file is a good choice.
 "              If you're a more advanced user, building your own .vimrc based
 "              on this file is still a good idea.
-"------------------------------------------------------------------------------ 
+"------------------------------------------------------------------------------
 " Set 'nocompatible' to ward off unexpected things that your distro might
 " have made, as well as sanely reset options when re-sourcing .vimrc
 set nocompatible
@@ -48,14 +48,14 @@ endif
 "--------------------------------------------------------------------------}}}
 " Bundles {{{
 " let NeoBundle manage NeoBundle
-" required! 
+" required!
 
 " Choose autocompleter
 if v:version <= 703
     let s:autocompleter = 'old'
 elseif has('win32') || has('win64')
     let s:autocompleter = 'neo'
-else 
+else
     let s:autocompleter = 'ycm'
 endif
 let g:is_exuberant = 1
@@ -116,7 +116,8 @@ elseif s:autocompleter == 'neo'
 elseif s:autocompleter == 'ycm'
     NeoBundle 'Valloric/YouCompleteMe' , {
                 \ 'build' : {
-                \    'unix' : './install.sh --clang-completer'
+                \    'unix' : './install.sh --clang-completer',
+                \    'mac' : './install.sh --clang-completer',
                 \    },
                 \ }
     NeoBundle 'SirVer/ultisnips'
@@ -151,7 +152,7 @@ if has("gui_running")
     elseif has("gui_win32")
         set guifont=Consolas:h11:cANSI
     elseif has("gui_gtk2")
-        set guifont=Ubuntu\ Mono\ derivative\ Powerline\ 11 
+        set guifont=Ubuntu\ Mono\ derivative\ Powerline\ 11
     endif
 endif
 
@@ -168,7 +169,7 @@ syntax on "Enable syntax highlighting
 " Copy ubuntu clipboard
 if has("unix")
     set clipboard=unnamedplus
-else 
+else
     set clipboard=unnamed
 endif
 
@@ -215,7 +216,7 @@ set hidden
 set wildmenu
 " Show partial commands in the last line of the screen
 set showcmd
-" Highlight searches 
+" Highlight searches
 set hlsearch
 
 "---------------------------------------------------------------------------}}}
@@ -285,7 +286,7 @@ nnoremap <F3> :nohl<CR>
 " Gundo toggle
 nnoremap <F5> :GundoToggle<CR>
 " Tagbar toggle
-nmap <F8> :TagbarToggle<CR> 
+nmap <F8> :TagbarToggle<CR>
 " Switch buffers using alt+number
 nnoremap <M-1> :1b<CR>
 nnoremap <M-2> :2b<CR>
@@ -370,7 +371,7 @@ endfunction
 if g:is_exuberant
     source ~/dotfiles/.vim/plugin_settings/easytags.vim
 endif
-" Autocompleter 
+" Autocompleter
 if s:autocompleter == 'old'
     source ~/.vim/plugin_settings/neocomplcache.vim
     source ~/.vim/plugin_settings/neosnippet.vim
@@ -383,7 +384,7 @@ elseif s:autocompleter == 'neo'
 elseif s:autocompleter == 'ycm'
     source ~/.vim/plugin_settings/ycm.vim
     source ~/.vim/plugin_settings/ultisnips.vim
-endif 
+endif
 "---------------------------------------------------------------------------}}}
 "Local Machine Settings
 if filereadable(expand('~/.vimrc.local'))
