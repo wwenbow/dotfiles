@@ -42,7 +42,7 @@ ZSH_THEME="agnoster-old"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git python command-not-found compleat zsh-syntax-highlighting history-substring-search pip brew brew-cask)
+plugins=(git python command-not-found compleat zsh-syntax-highlighting history-substring-search pip brew brew-cask mvn)
 
 source $ZSH/oh-my-zsh.sh
 
