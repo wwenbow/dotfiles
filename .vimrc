@@ -70,7 +70,6 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 " My bundles here:
 " original repos on GitHub
 NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'Lokaltog/vim-easymotion'
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'majutsushi/tagbar'
 NeoBundle 'scrooloose/syntastic'
@@ -93,6 +92,9 @@ NeoBundle 'Shougo/unite.vim'
 NeoBundle 'xolox/vim-misc'
 NeoBundle 'mattn/emmet-vim'
 NeoBundle 'tmhedberg/matchit'
+if v:version >= 703
+    NeoBundle 'Lokaltog/vim-easymotion'
+endif
 
 if g:is_exuberant
     NeoBundle 'xolox/vim-easytags'
