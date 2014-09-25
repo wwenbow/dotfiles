@@ -93,6 +93,7 @@ NeoBundle 'Shougo/unite.vim'
 NeoBundle 'xolox/vim-misc'
 NeoBundle 'mattn/emmet-vim'
 NeoBundle 'tmhedberg/matchit'
+NeoBundle 'Valloric/MatchTagAlways'
 
 if g:is_exuberant
     NeoBundle 'xolox/vim-easytags'
@@ -207,6 +208,9 @@ endfunction
 
 " Auto remove trailing whitespace
 autocmd BufWritePre * :%s/\s\+$//e
+
+" Autocd to current file directory safely
+autocmd BufEnter * silent! lcd %:p:h
 
 "---------------------------------------------------------------------------}}}
 " Must have options {{{
