@@ -38,11 +38,11 @@ endif
 if has('win32') || has('win64')
 	set runtimepath+=~/vimfiles/bundle/neobundle.vim/
 	let path='~/vimfiles/bundle'
-	call neobundle#rc(expand(path))
+	call neobundle#begin(expand(path))
 else
 	set runtimepath+=~/.vim/bundle/neobundle.vim/
 	let path='~/.vim/bundle'
-	call neobundle#rc(expand(path))
+	call neobundle#begin(expand(path))
 endif
 
 "--------------------------------------------------------------------------}}}
@@ -141,6 +141,8 @@ if iCanHazNeoBundle == 0
     echo ""
     NeoBundleInstall
 endif
+
+call neobundle#end()
 " Setting up NeoBundle - the vim plugin bundler end
 
 "---------------------------------------------------------------------------}}}
