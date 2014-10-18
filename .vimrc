@@ -90,9 +90,18 @@ NeoBundle 'Shougo/vimproc', {
             \ }
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'xolox/vim-misc'
+NeoBundle 'nathanaelkane/vim-indent-guides'
+NeoBundle 'mileszs/ack.vim'
+
+" Web dev
 NeoBundle 'mattn/emmet-vim'
 NeoBundle 'tmhedberg/matchit'
 NeoBundle 'Valloric/MatchTagAlways'
+NeoBundleLazy 'jelera/vim-javascript-syntax', {'autoload':{'filetypes':['javascript']}}
+NeoBundle 'pangloss/vim-javascript'
+NeoBundle 'marijnh/tern_for_vim', { 'build' : { 'others' : 'npm install' }, }
+
+
 if v:version >= 703
     NeoBundle 'Lokaltog/vim-easymotion'
 endif
@@ -212,7 +221,7 @@ endfunction
 autocmd BufWritePre * :%s/\s\+$//e
 
 " Autocd to current file directory safely
-autocmd BufEnter * silent! lcd %:p:h
+" autocmd BufEnter * silent! lcd %:p:h
 
 "---------------------------------------------------------------------------}}}
 " Must have options {{{
