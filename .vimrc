@@ -195,7 +195,7 @@ if v:version >= 703
 endif
 
 "set tw=79 " Wrap text at column 79
-set nowrap
+"set nowrap
 
 " Highlight all instances of word under cursor, when idle.
 " Useful when studying strange source code.
@@ -383,6 +383,10 @@ function! s:unite_settings()
   imap <buffer> <C-j>   <Plug>(unite_select_next_line)
   imap <buffer> <C-k>   <Plug>(unite_select_previous_line)
 endfunction
+
+"---------------------------------------------------------------------------}}}
+" Indent Guides {{{
+let g:indent_guides_guide_size = 1
 
 "---------------------------------------------------------------------------}}}
 " External Plugin Settings {{{
