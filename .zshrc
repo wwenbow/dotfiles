@@ -63,6 +63,9 @@ source $ZSH/oh-my-zsh.sh
 # ssh
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
 
+# Vim mode
+bindkey -v
+
 #---------------------------------------------------------------------------}}}
 # Environment Variables {{{
 export PATH="/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:\
