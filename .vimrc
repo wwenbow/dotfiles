@@ -408,6 +408,12 @@ elseif s:autocompleter == 'ycm'
     source ~/.vim/plugin_settings/ultisnips.vim
 endif
 "---------------------------------------------------------------------------}}}
+" GVim Settings {{{
+set guioptions-=L
+set guioptions-=r
+set guioptions+=c
+
+"---------------------------------------------------------------------------}}}
 "Local Machine Settings
 if filereadable(expand('~/.vimrc.local'))
     source ~/.vimrc.local
