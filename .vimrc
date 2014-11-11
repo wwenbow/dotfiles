@@ -236,6 +236,8 @@ set wildmenu
 set showcmd
 " Highlight searches
 set hlsearch
+" Incremental seatch
+set incsearch
 
 "---------------------------------------------------------------------------}}}
 " Usability options {{{
