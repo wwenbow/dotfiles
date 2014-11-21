@@ -99,8 +99,10 @@ NeoBundle 'tmhedberg/matchit'
 NeoBundle 'Valloric/MatchTagAlways'
 NeoBundleLazy 'jelera/vim-javascript-syntax', {'autoload':{'filetypes':['javascript']}}
 NeoBundle 'pangloss/vim-javascript'
+NeoBundle 'othree/javascript-libraries-syntax.vim'
 NeoBundle 'marijnh/tern_for_vim', { 'build' : { 'others' : 'npm install' }, }
-NeoBundle 'ahayman/vim-nodejs-complete'
+NeoBundle 'myhere/vim-nodejs-complete'
+"NeoBundle 'ahayman/vim-nodejs-complete'
 
 
 if v:version >= 703
