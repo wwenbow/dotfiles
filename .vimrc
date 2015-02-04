@@ -60,6 +60,9 @@ else
 endif
 let g:is_exuberant = 1
 
+" Language plugins
+let g:web_dev_plugins = 1
+
 " Overrides
 if filereadable(expand('~/.vimrc.local'))
     source ~/.vimrc.local
@@ -94,15 +97,17 @@ NeoBundle 'nathanaelkane/vim-indent-guides'
 NeoBundle 'mileszs/ack.vim'
 
 " Web dev
-NeoBundle 'mattn/emmet-vim'
-NeoBundle 'tmhedberg/matchit'
-NeoBundle 'Valloric/MatchTagAlways'
-NeoBundleLazy 'jelera/vim-javascript-syntax', {'autoload':{'filetypes':['javascript']}}
-NeoBundle 'pangloss/vim-javascript'
-NeoBundle 'othree/javascript-libraries-syntax.vim'
-NeoBundle 'marijnh/tern_for_vim', { 'build' : { 'others' : 'npm install' }, }
-NeoBundle 'myhere/vim-nodejs-complete'
-"NeoBundle 'ahayman/vim-nodejs-complete'
+if g:web_dev_plugins == 1
+    NeoBundle 'mattn/emmet-vim'
+    NeoBundle 'tmhedberg/matchit'
+    NeoBundle 'Valloric/MatchTagAlways'
+    NeoBundleLazy 'jelera/vim-javascript-syntax', {'autoload':{'filetypes':['javascript']}}
+    NeoBundle 'pangloss/vim-javascript'
+    NeoBundle 'othree/javascript-libraries-syntax.vim'
+    NeoBundle 'marijnh/tern_for_vim', { 'build' : { 'others' : 'npm install' }, }
+    NeoBundle 'myhere/vim-nodejs-complete'
+    "NeoBundle 'ahayman/vim-nodejs-complete'
+endif
 
 
 if v:version >= 703
