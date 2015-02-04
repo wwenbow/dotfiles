@@ -172,10 +172,10 @@ filetype indent plugin on
 syntax on "Enable syntax highlighting
 
 " Copy ubuntu clipboard
-if has('mac') || has('win32') || has('win64')
-    set clipboard=unnamed
-else
+if has('unnamedplus')
     set clipboard=unnamedplus
+else
+    set clipboard=unnamed
 endif
 
 set omnifunc=syntaxcomplete#Complete "Omni completion
@@ -185,7 +185,7 @@ if v:version >= 703
 endif
 
 "set tw=79 " Wrap text at column 79
-set nowrap
+"set nowrap
 
 " Highlight all instances of word under cursor, when idle.
 " Useful when studying strange source code.
