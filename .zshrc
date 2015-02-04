@@ -105,3 +105,5 @@ fi
 # Fzf source
 source ~/.fzf.zsh
 
+#local
+source ~/.zshrc.local
