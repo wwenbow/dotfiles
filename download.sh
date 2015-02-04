@@ -17,6 +17,10 @@ if [ ! -d ~/.oh-my-zsh/plugins/zsh-syntax-highlighting/ ]; then
     git clone git://github.com/zsh-users/zsh-syntax-highlighting.git \
         ~/.oh-my-zsh/plugins/zsh-syntax-highlighting
 fi
+# Downlaod tmux plugin manager
+if [ ! -d ~/.tmux/plugins/tpm/ ]; then
+    git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+fi
 
 # Download and install fzf
 if [ ! -d ~/.fzf/ ]; then

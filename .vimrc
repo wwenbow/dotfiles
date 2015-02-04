@@ -90,9 +90,21 @@ NeoBundle 'Shougo/vimproc', {
             \ }
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'xolox/vim-misc'
+NeoBundle 'nathanaelkane/vim-indent-guides'
+NeoBundle 'mileszs/ack.vim'
+
+" Web dev
 NeoBundle 'mattn/emmet-vim'
 NeoBundle 'tmhedberg/matchit'
 NeoBundle 'Valloric/MatchTagAlways'
+NeoBundleLazy 'jelera/vim-javascript-syntax', {'autoload':{'filetypes':['javascript']}}
+NeoBundle 'pangloss/vim-javascript'
+NeoBundle 'othree/javascript-libraries-syntax.vim'
+NeoBundle 'marijnh/tern_for_vim', { 'build' : { 'others' : 'npm install' }, }
+NeoBundle 'myhere/vim-nodejs-complete'
+"NeoBundle 'ahayman/vim-nodejs-complete'
+
+
 if v:version >= 703
     NeoBundle 'Lokaltog/vim-easymotion'
 endif
@@ -214,7 +226,7 @@ endfunction
 autocmd BufWritePre * :%s/\s\+$//e
 
 " Autocd to current file directory safely
-autocmd BufEnter * silent! lcd %:p:h
+" autocmd BufEnter * silent! lcd %:p:h
 
 "---------------------------------------------------------------------------}}}
 " Must have options {{{
@@ -226,6 +238,8 @@ set wildmenu
 set showcmd
 " Highlight searches
 set hlsearch
+" Incremental seatch
+set incsearch
 
 "---------------------------------------------------------------------------}}}
 " Usability options {{{
@@ -375,6 +389,10 @@ function! s:unite_settings()
 endfunction
 
 "---------------------------------------------------------------------------}}}
+" Indent Guides {{{
+let g:indent_guides_guide_size = 1
+
+"---------------------------------------------------------------------------}}}
 " External Plugin Settings {{{
 if g:is_exuberant
     source ~/dotfiles/.vim/plugin_settings/easytags.vim
@@ -393,6 +411,12 @@ elseif s:autocompleter == 'ycm'
     source ~/.vim/plugin_settings/ycm.vim
     source ~/.vim/plugin_settings/ultisnips.vim
 endif
+"---------------------------------------------------------------------------}}}
+" GVim Settings {{{
+set guioptions-=L
+set guioptions-=r
+set guioptions+=c
+
 "---------------------------------------------------------------------------}}}
 "Local Machine Settings
 if filereadable(expand('~/.vimrc.local'))
