@@ -95,6 +95,8 @@ NeoBundle 'Shougo/unite.vim'
 NeoBundle 'xolox/vim-misc'
 NeoBundle 'nathanaelkane/vim-indent-guides'
 NeoBundle 'mileszs/ack.vim'
+NeoBundle 'guns/vim-clojure-static'
+NeoBundle 'kien/rainbow_parentheses.vim'
 
 " Web dev
 if g:web_dev_plugins == 1
@@ -106,6 +108,7 @@ if g:web_dev_plugins == 1
     NeoBundle 'othree/javascript-libraries-syntax.vim'
     NeoBundle 'marijnh/tern_for_vim', { 'build' : { 'others' : 'npm install' }, }
     NeoBundle 'myhere/vim-nodejs-complete'
+    NeoBundle 'briancollins/vim-jst'
     "NeoBundle 'ahayman/vim-nodejs-complete'
 endif
 
