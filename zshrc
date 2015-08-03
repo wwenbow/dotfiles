@@ -35,7 +35,7 @@ export TERM=xterm-256color
 if [[ $platform == 'linux' ]]; then
     eval "$(dircolors ~/.dir_colors)"
 elif [[ $platform == 'osx' ]]; then
-    eval "$(gdircolors ~/.dir_colors)"
+    export LSCOLORS=gxfxbEaEBxxEhEhBaDaCaD
 fi
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 #---------------------------------------------------------------------------}}}
