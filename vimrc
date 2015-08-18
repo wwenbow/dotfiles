@@ -433,7 +433,11 @@ endif
 set guioptions-=L
 set guioptions-=r
 set guioptions+=c
-
+"---------------------------------------------------------------------------}}}
+" Syntastic Settings {{{
+let g:syntastic_mode_map = { 'mode': 'active',
+                           \ 'active_filetypes': ['html', 'js', 'py'],
+                           \ 'passive_filetypes': ['java'] }
 "---------------------------------------------------------------------------}}}
 "Local Machine Settings
 if filereadable(expand('~/.vimrc.local'))
