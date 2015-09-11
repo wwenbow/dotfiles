@@ -39,7 +39,7 @@ zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 #[[ -z "$TMUX" ]] && exec tmux
 
 #local
-if [ -a "$HOME/.zshrc.local" ] ; then
+if [ -e "$HOME/.zshrc.local" ] ; then
     source ~/.zshrc.local
 fi
 
