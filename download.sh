@@ -4,7 +4,10 @@
 #
 #############################
 
-# Download oh-my-zsh
+# Download prereqs
+cat prereqs.txt | xargs -n 1 sudo apt-get install -y 
+
+# Download prezto
 if [ ! -d ~/.oh-my-zsh/ ]; then
    git clone --recursive https://github.com/sorin-ionescu/prezto.git ~/.zprezto
 fi
@@ -18,3 +21,6 @@ fi
 if [ ! -d ~/.fzf/ ]; then
     git clone https://github.com/junegunn/fzf.git ~/.fzf
 fi
+
+# Download powerline status
+pip install powerline-status --user
