@@ -177,7 +177,7 @@ if has("gui_running")
     elseif has("gui_win32")
         set guifont=Consolas:h11:cANSI
     elseif has("gui_gtk2")
-        set guifont=Inconsolata-dz\ for\ Powerline\ 12
+        set guifont=Monospace\ 12
     endif
 endif
 
