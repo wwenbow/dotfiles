@@ -93,6 +93,7 @@ NeoBundle 'Shougo/vimproc', {
             \    },
             \ }
 NeoBundle 'Shougo/unite.vim'
+NeoBundle 'Shougo/neomru.vim'
 NeoBundle 'xolox/vim-misc'
 NeoBundle 'nathanaelkane/vim-indent-guides'
 NeoBundle 'mileszs/ack.vim'
