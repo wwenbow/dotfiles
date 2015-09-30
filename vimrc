@@ -204,7 +204,7 @@ else
     set clipboard=unnamed
 endif
 
-set omnifunc=syntaxcomplete#Complete "Omni completion
+"set omnifunc=syntaxcomplete#Complete "Omni completion
 
 if v:version >= 703
     set colorcolumn=80 "Highlight column 80, page border
