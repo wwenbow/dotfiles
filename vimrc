@@ -56,7 +56,8 @@ if v:version <= 703
 elseif has('win32') || has('win64')
     let s:autocompleter = 'neo'
 else
-    let s:autocompleter = 'ycm'
+    "let s:autocompleter = 'ycm'
+    let s:autocompleter = 'neo'
 endif
 let g:is_exuberant = 0
 
@@ -132,15 +133,20 @@ elseif s:autocompleter == 'neo'
     "NeoBundle 'Shougo/neosnippet-snippets'
     NeoBundle 'SirVer/ultisnips'
     NeoBundle 'honza/vim-snippets'
-    NeoBundle 'Shougo/echodoc.vim'
+    NeoBundle 'Shougo/echodoc', '', 'default'
+    call neobundle#config('echodoc', {
+                \ 'lazy' : 1,
+                \ 'autoload' : {
+                \ 'insert' : 1,
+                \ }})
     NeoBundle 'davidhalter/jedi-vim'
-    NeoBundle 'osyo-manga/vim-reunions'
-    NeoBundle 'osyo-manga/vim-marching'
+    "NeoBundle 'osyo-manga/vim-reunions'
+    "NeoBundle 'osyo-manga/vim-marching'
 elseif s:autocompleter == 'ycm'
     NeoBundle 'Valloric/YouCompleteMe' , {
                 \ 'build' : {
-                \    'unix' : './install.sh',
-                \    'mac' : './install.sh',
+                \    'unix' : './install.py',
+                \    'mac' : './install.py',
                 \    },
                 \ }
     NeoBundle 'SirVer/ultisnips'
@@ -419,10 +425,10 @@ if s:autocompleter == 'old'
     source ~/.vim/plugin_settings/neocomplcache.vim
     source ~/.vim/plugin_settings/neosnippet.vim
 elseif s:autocompleter == 'neo'
-    source ~/vimfiles/plugin_settings/neocomplete.vim
-    source ~/vimfiles/plugin_settings/vim-marching.vim
-    source ~/vimfiles/plugin_settings/jedi-vim.vim
-    source ~/vimfiles/plugin_settings/ultisnips.vim
+    source ~/.vim/plugin_settings/neocomplete.vim
+    "source ~/.vim/plugin_settings/vim-marching.vim
+    source ~/.vim/plugin_settings/jedi-vim.vim
+    source ~/.vim/plugin_settings/ultisnips.vim
     let g:echodoc_enable_at_startup = 1
 elseif s:autocompleter == 'ycm'
     source ~/.vim/plugin_settings/ycm.vim
