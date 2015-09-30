@@ -53,11 +53,10 @@ endif
 " Choose autocompleter
 if v:version <= 703
     let s:autocompleter = 'old'
-elseif has('win32') || has('win64')
+elseif has('win32') || has('win64') || has('lua')
     let s:autocompleter = 'neo'
 else
-    "let s:autocompleter = 'ycm'
-    let s:autocompleter = 'neo'
+    let s:autocompleter = 'ycm'
 endif
 let g:is_exuberant = 0
 
