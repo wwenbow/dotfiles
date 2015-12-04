@@ -98,6 +98,7 @@ NeoBundle 'nathanaelkane/vim-indent-guides'
 NeoBundle 'mileszs/ack.vim'
 NeoBundle 'guns/vim-clojure-static'
 NeoBundle 'kien/rainbow_parentheses.vim'
+NeoBundle 'chase/vim-ansible-yaml'
 
 " Web dev
 if g:web_dev_plugins == 1
