@@ -62,7 +62,7 @@ set-window-option -g window-status-current-attr bright
 # show session name, window & pane number, date and time on right side of
 # status bar
 set -g status-right-length 60
-set -g status-right "#[bg=colour10]#[fg=colour255] %d %b %Y #[bg=colour14]#[fg=colour255] %l:%M %p"
+set -g status-right "#[bg=colour10]#[fg=black] %d %b %Y #[bg=colour14]#[fg=black] %l:%M %p"
 
 
 # List of plugins
