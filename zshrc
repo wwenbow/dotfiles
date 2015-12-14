@@ -27,7 +27,10 @@ if [ -d "$HOME/.local/bin" ] ; then
     export PATH="$HOME/.local/bin:$PATH"
 fi
 
-export TERM=xterm-256color
+if [[ $TERM == 'xterm' ]]; then
+    export TERM=xterm-256color
+fi
+
 if [[ $platform == 'linux' ]]; then
     eval "$(dircolors ~/.dir_colors)"
 elif [[ $platform == 'osx' ]]; then

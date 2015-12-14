@@ -13,6 +13,7 @@ set -g mode-mouse on
 set -g mouse-resize-pane on
 set -g mouse-select-pane on
 set -g mouse-select-window on
+set -g mouse-utf8 off
 
 # Switch window bindings
 bind -n S-down new-window
@@ -41,8 +42,8 @@ set -g status-interval 5               # set update frequencey (default 15 secon
 # set-option -g status-position top    # position the status bar at top of screen
 
 # visual notification of activity in other windows
-setw -g monitor-activity on
-set -g visual-activity on
+#setw -g monitor-activity on
+#set -g visual-activity on
 
 # set color for status bar
 set-option -g status-bg black
@@ -50,12 +51,12 @@ set-option -g status-fg colour255
 set-option -g status-attr dim
 
 # set window list colors - red for active and cyan for inactive
-set-window-option -g window-status-fg black
-set-window-option -g window-status-bg colour10
+set-window-option -g window-status-bg black
+set-window-option -g window-status-fg white
 set-window-option -g window-status-attr dim
 
-set-window-option -g window-status-current-fg black
 set-window-option -g window-status-current-bg colour14
+set-window-option -g window-status-current-fg black
 set-window-option -g window-status-current-attr bright
 # show host name and IP address on left side of status bar
 
