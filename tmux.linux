@@ -8,6 +8,10 @@ set-option -g default-shell /bin/zsh
 # increase scrollback buffer size
 set -g history-limit 50000
 
+# Fix unresponsiveness
+set -g c0-change-trigger 150
+set -g c0-change-interval 100
+
 # Mouse mode
 set -g mode-mouse on
 set -g mouse-resize-pane on
