@@ -80,6 +80,7 @@ NeoBundle 'sjl/gundo.vim'
 NeoBundle 'altercation/vim-colors-solarized'
 NeoBundle 'sickill/vim-monokai'
 NeoBundle 'bling/vim-airline'
+NeoBundle 'vim-airline/vim-airline-themes'
 NeoBundle 'kris89/vim-multiple-cursors'
 NeoBundle 'kien/ctrlp.vim'
 NeoBundle 'godlygeek/tabular' "easily make tables
