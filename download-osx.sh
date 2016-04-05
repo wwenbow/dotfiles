@@ -21,6 +21,3 @@ fi
 if [ ! -d ~/.fzf/ ]; then
     git clone https://github.com/junegunn/fzf.git ~/.fzf
 fi
-
-# Download powerline status
-pip install powerline-status --user

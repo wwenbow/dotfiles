@@ -5,7 +5,7 @@
 #############################
 
 # Download prereqs
-cat prereqs.txt | xargs -n 1 sudo apt-get install -y 
+cat prereqs.txt | xargs -n 1 sudo apt-get install -y
 
 # Download prezto
 if [ ! -d ~/.oh-my-zsh/ ]; then
@@ -21,6 +21,3 @@ fi
 if [ ! -d ~/.fzf/ ]; then
     git clone https://github.com/junegunn/fzf.git ~/.fzf
 fi
-
-# Download powerline status
-pip install powerline-status --user
