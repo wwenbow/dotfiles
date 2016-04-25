@@ -103,17 +103,17 @@ NeoBundle 'kien/rainbow_parentheses.vim'
 NeoBundle 'chase/vim-ansible-yaml'
 
 " Web dev
+" npm install tern in bundles/tern
+" npm install -g jshint
 if g:web_dev_plugins == 1
     NeoBundle 'mattn/emmet-vim'
     NeoBundle 'tmhedberg/matchit'
     NeoBundle 'Valloric/MatchTagAlways'
-    NeoBundleLazy 'jelera/vim-javascript-syntax', {'autoload':{'filetypes':['javascript']}}
     NeoBundle 'pangloss/vim-javascript'
     NeoBundle 'othree/javascript-libraries-syntax.vim'
     NeoBundle 'marijnh/tern_for_vim', { 'build' : { 'others' : 'npm install' }, }
-    NeoBundle 'myhere/vim-nodejs-complete'
+    NeoBundle 'moll/vim-node'
     NeoBundle 'briancollins/vim-jst'
-    "NeoBundle 'ahayman/vim-nodejs-complete'
 endif
 
 
