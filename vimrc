@@ -96,11 +96,13 @@ NeoBundle 'Shougo/vimproc', {
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/neomru.vim'
 NeoBundle 'xolox/vim-misc'
+NeoBundle 'xolox/vim-lua-ftplugin'
 NeoBundle 'nathanaelkane/vim-indent-guides'
 NeoBundle 'mileszs/ack.vim'
 NeoBundle 'guns/vim-clojure-static'
 NeoBundle 'kien/rainbow_parentheses.vim'
 NeoBundle 'chase/vim-ansible-yaml'
+NeoBundle 'tomtom/tcomment_vim'
 
 " Web dev
 " npm install tern in bundles/tern
@@ -182,7 +184,7 @@ set t_Co=256
 " font
 if has("gui_running")
     if has("gui_macvim")
-        set guifont=Monaco:h14
+        set guifont=Source\ Code\ Pro:h11
     elseif has("gui_win32")
         set guifont=Consolas:h11:cANSI
     elseif has("gui_gtk2")
@@ -431,6 +433,7 @@ elseif s:autocompleter == 'neo'
     source ~/.vim/plugin_settings/neocomplete.vim
     "source ~/.vim/plugin_settings/vim-marching.vim
     source ~/.vim/plugin_settings/jedi-vim.vim
+    source ~/.vim/plugin_settings/lua-ftplugin.vim
     source ~/.vim/plugin_settings/ultisnips.vim
     let g:echodoc_enable_at_startup = 1
 elseif s:autocompleter == 'ycm'
