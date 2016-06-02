@@ -54,12 +54,13 @@ call dein#add('sickill/vim-monokai')
 call dein#add('bling/vim-airline')
 call dein#add('vim-airline/vim-airline-themes')
 call dein#add('kris89/vim-multiple-cursors')
-call dein#add('kien/ctrlp.vim')
+call dein#add('ctrlpvim/ctrlp.vim')
 call dein#add('godlygeek/tabular') "easily make tables
 call dein#add('tpope/vim-surround') "manipulate parenthesis
 call dein#add('Shougo/vimproc.vim', {'build' : 'make'})
 call dein#add('Shougo/unite.vim')
 call dein#add('Shougo/neomru.vim')
+call dein#add('Shougo/neoyank.vim')
 call dein#add('xolox/vim-misc')
 call dein#add('nathanaelkane/vim-indent-guides')
 call dein#add('kien/rainbow_parentheses.vim')
@@ -149,10 +150,6 @@ set showcmd
 set hlsearch
 " Incremental seatch
 set incsearch
-
-"---------------------------------------------------------------------------}}}
-" Usability options {{{
-"
 " Use case insensitive search, except when using capital letters
 set ignorecase
 set smartcase
@@ -180,16 +177,14 @@ set mouse=a
 set cmdheight=2
 " Display line numbers on the left
 set number
+set relativenumber
 " Quickly time out on keycodes, but never time out on mappings
-set notimeout ttimeout ttimeoutlen=50
+set notimeout ttimeout ttimeoutlen=200
 " Use <F11> to toggle between 'paste' and 'nopaste'
 set pastetoggle=<F11>
 " Natural slpit opening
 set splitbelow
 set splitright
-" minibuffexplorer split on top
-"let g:miniBufExplBRSplit=0
-
 "---------------------------------------------------------------------------}}}
 " Indentation options {{{
 "
@@ -205,6 +200,7 @@ set cinkeys-=0#
 "set shiftwidth=2
 "set tabstop=2
 autocmd Filetype javascript setlocal ts=2 sw=2 expandtab
+autocmd Filetype lua setlocal ts=2 sw=2 expandtab
 
 "---------------------------------------------------------------------------}}}
 " Mappings {{{
@@ -248,11 +244,6 @@ source ~/.config/nvim/plugin-settings/airline.vim
 source ~/.config/nvim/plugin-settings/syntastic.vim
 source ~/.config/nvim/plugin-settings/indent-guides.vim
 source ~/.config/nvim/plugin-settings/echodoc.vim
-"---------------------------------------------------------------------------}}}
-" GVim Settings {{{
-set guioptions-=L
-set guioptions-=r
-set guioptions+=c
 "---------------------------------------------------------------------------}}}
 "Local Machine Settings
 if filereadable(expand('~/.vimrc.local'))
