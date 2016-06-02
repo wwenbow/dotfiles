@@ -1,5 +1,8 @@
 vim/bundle/
 vim/.netrwhist
+nvim/autoload
+nvim/plugged
+nvim/dein
 *.swp
 *.swo
 *.pyc

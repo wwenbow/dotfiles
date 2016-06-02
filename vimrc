@@ -314,8 +314,7 @@ set cinkeys-=0#
 " two characters wide.
 "set shiftwidth=2
 "set tabstop=2
-" cs267 2 tabs
-autocmd BufRead */cs_267/homewor*/*.c* :set shiftwidth=2 softtabstop=2
+autocmd Filetype javascript setlocal ts=2 sw=2 expandtab
 
 "---------------------------------------------------------------------------}}}
 " Mappings {{{
