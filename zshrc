@@ -43,6 +43,7 @@ zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 #
 #Fix for neovim c-h
 export TERMINFO="$HOME/.terminfo"
+export EDITOR="nvim"
 
 #local
 if [ -e "$HOME/.zshrc.local" ] ; then
