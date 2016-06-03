@@ -231,6 +231,9 @@ noremap <C-J> <C-W>j
 noremap <C-K> <C-W>k
 noremap <C-H> <C-W>h
 noremap <C-L> <C-W>l
+" Nvim terminal mapping
+tnoremap <esc> <C-\><C-n>
+
 "---------------------------------------------------------------------------}}}
 " External Plugin Settings {{{
 if g:is_exuberant
