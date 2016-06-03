@@ -49,6 +49,7 @@ call dein#add('scrooloose/nerdtree')
 call dein#add('majutsushi/tagbar')
 call dein#add('scrooloose/syntastic')
 call dein#add('simnalamburt/vim-mundo')
+call dein#add('mbbill/undotree')
 call dein#add('altercation/vim-colors-solarized')
 call dein#add('sickill/vim-monokai')
 call dein#add('bling/vim-airline')
@@ -210,25 +211,26 @@ map Y y$
 " Map <F3> (redraw screen) to also turn off search highlighting until the
 nnoremap <F3> :nohl<CR>
 " Gundo toggle
-nnoremap <F5> :GundoToggle<CR>
+nnoremap <F5> :UndotreeToggle<CR>
 " Tagbar toggle
-nmap <F8> :TagbarToggle<CR>
+nnoremap <F8> :TagbarToggle<CR>
 " Switch buffers using alt+number
-nnoremap <M-1> :1b<CR>
-nnoremap <M-2> :2b<CR>
-nnoremap <M-3> :3b<CR>
-nnoremap <M-4> :4b<CR>
-nnoremap <M-5> :5b<CR>
-nnoremap <M-6> :6b<CR>
-nnoremap <M-7> :7b<CR>
-nnoremap <M-8> :8b<CR>
-nnoremap <M-9> :9b<CR>
-nnoremap <M-0> :10b<CR>
+nnoremap <A-1> :1b<CR>
+nnoremap <A-2> :2b<CR>
+nnoremap <A-3> :3b<CR>
+nnoremap <A-4> :4b<CR>
+nnoremap <A-5> :5b<CR>
+nnoremap <A-6> :6b<CR>
+nnoremap <A-7> :7b<CR>
+nnoremap <A-8> :8b<CR>
+nnoremap <A-9> :9b<CR>
+nnoremap <A-0> :10b<CR>
 " Switch windows using ctrl+hjkl
-noremap <C-Down>     <C-W>j
-noremap <C-Up>       <C-W>k
-noremap <C-Left>     <C-W>h
-noremap <C-Right>    <C-W>l
+inoremap <C-W> <C-O><C-W>
+noremap <C-J> <C-W>j
+noremap <C-K> <C-W>k
+noremap <C-H> <C-W>h
+noremap <C-L> <C-W>l
 "---------------------------------------------------------------------------}}}
 " External Plugin Settings {{{
 if g:is_exuberant
@@ -246,6 +248,6 @@ source ~/.config/nvim/plugin-settings/indent-guides.vim
 source ~/.config/nvim/plugin-settings/echodoc.vim
 "---------------------------------------------------------------------------}}}
 "Local Machine Settings
-if filereadable(expand('~/.vimrc.local'))
-    source ~/.vimrc.local
+if filereadable(expand('~/.nvimrc.local'))
+    source ~/.nvimrc.local
 endif

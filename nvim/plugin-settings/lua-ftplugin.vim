@@ -1,3 +1,7 @@
+" add local directory to lua path for omni completion
+autocmd FileType lua let $LUA_PATH = xolox#misc#os#exec({'command': 'luajit -e "print(package.path)"'})['stdout'][0]
+autocmd FileType lua let $LUA_PATH = $LUA_PATH . ';' . getcwd() . '/?.lua'
+
 autocmd FileType lua setlocal omnifunc=xolox#lua#omnifunc
 
 let g:lua_check_syntax = 0

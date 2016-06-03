@@ -40,6 +40,9 @@ zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 
 #[[ $- != *i* ]] && return
 #[[ -z "$TMUX" ]] && exec tmux
+#
+#Fix for neovim c-h
+export TERMINFO="$HOME/.terminfo"
 
 #local
 if [ -e "$HOME/.zshrc.local" ] ; then

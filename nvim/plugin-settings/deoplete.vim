@@ -32,7 +32,7 @@ inoremap <expr><S-TAB>  pumvisible() ? "\<C-p>" : "\<S-TAB>>"
 " <C-h>, <BS>: close popup and delete backword char.
 inoremap <expr><C-y>  deoplete#mappings#close_popup()
 " Close popup by <Space>.
-inoremap <expr><Space> pumvisible() ? deoplete#mappings#close_popup() : "\<Space>"
+inoremap <expr><Space> pumvisible() ? deoplete#mappings#close_popup() . "\<Space>" : "\<Space>"
 
 " AutoComplPop like behavior.
 "let g:deoplete#enable_auto_select = 1
