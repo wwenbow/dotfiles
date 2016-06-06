@@ -76,6 +76,8 @@ call dein#add('xolox/vim-lua-ftplugin')
 call dein#add('guns/vim-clojure-static')
 call dein#add('chase/vim-ansible-yaml')
 call dein#add('Shougo/echodoc')
+call dein#add('ensime/ensime-vim')
+call dein#add('derekwyatt/vim-scala')
 
 " Web dev
 " npm install tern in bundles/tern
@@ -180,7 +182,7 @@ set cmdheight=2
 set number
 set relativenumber
 " Quickly time out on keycodes, but never time out on mappings
-set notimeout ttimeout ttimeoutlen=200
+set notimeout ttimeout ttimeoutlen=50
 " Use <F11> to toggle between 'paste' and 'nopaste'
 set pastetoggle=<F11>
 " Natural slpit opening
@@ -241,7 +243,7 @@ if g:is_exuberant
 endif
 source ~/.vim/plugin_settings/ultisnips.vim
 source ~/.config/nvim/plugin-settings/deoplete.vim
-source ~/.config/nvim/plugin-settings/jed-vim.vim
+source ~/.config/nvim/plugin-settings/jedi-vim.vim
 source ~/.config/nvim/plugin-settings/lua-ftplugin.vim
 source ~/.config/nvim/plugin-settings/deoplete-ternjs.vim
 source ~/.config/nvim/plugin-settings/unite.vim
@@ -249,6 +251,7 @@ source ~/.config/nvim/plugin-settings/airline.vim
 source ~/.config/nvim/plugin-settings/syntastic.vim
 source ~/.config/nvim/plugin-settings/indent-guides.vim
 source ~/.config/nvim/plugin-settings/echodoc.vim
+source ~/.config/nvim/plugin-settings/ensime-vim.vim
 "---------------------------------------------------------------------------}}}
 "Local Machine Settings
 if filereadable(expand('~/.nvimrc.local'))

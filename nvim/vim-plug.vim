@@ -1,18 +1,10 @@
-" URL: http://vim.wikia.com/wiki/Example_vimrc
-" Authors: http://vim.wikia.com/wiki/Vim_on_Freenode
-" Description: A minimal, but feature rich, example .vimrc. If you are a
-"              newbie, basing your first .vimrc on this file is a good choice.
-"              If you're a more advanced user, building your own .vimrc based
-"              on this file is still a good idea.
-"------------------------------------------------------------------------------
-" Set 'nocompatible' to ward off unexpected things that your distro might
-" have made, as well as sanely reset options when re-sourcing .vimrc
-set nocompatible
-
 " Fold vimrc
 set fdm=marker
 
 " Plugin Settings {{{
+if &compatible
+  set nocompatible               " Be iMproved
+endif
 
 let vimplugInstalled=0
 let plugvim=expand('~/.config/nvim/autoload/plug.vim')
@@ -46,33 +38,38 @@ Plug 'scrooloose/nerdtree'
 Plug 'majutsushi/tagbar'
 Plug 'scrooloose/syntastic'
 Plug 'simnalamburt/vim-mundo'
+Plug 'mbbill/undotree'
 Plug 'altercation/vim-colors-solarized'
 Plug 'sickill/vim-monokai'
 Plug 'bling/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'kris89/vim-multiple-cursors'
-Plug 'kien/ctrlp.vim'
+Plug 'ctrlpvim/ctrlp.vim'
 Plug 'godlygeek/tabular' "easily make tables
 Plug 'tpope/vim-surround' "manipulate parenthesis
-Plug 'Shougo/vimproc.vim', { 'do': 'make' }
+Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 Plug 'Shougo/unite.vim'
 Plug 'Shougo/neomru.vim'
+Plug 'Shougo/neoyank.vim'
 Plug 'xolox/vim-misc'
-Plug 'xolox/vim-lua-ftplugin'
 Plug 'nathanaelkane/vim-indent-guides'
-Plug 'guns/vim-clojure-static'
 Plug 'kien/rainbow_parentheses.vim'
-Plug 'chase/vim-ansible-yaml'
 Plug 'tomtom/tcomment_vim'
 Plug 'Lokaltog/vim-easymotion'
 
 function! DoRemote(arg)
   UpdateRemotePlugins
 endfunction
-Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
-Plug 'davidhalter/jedi-vim'
+
+Plug 'Shougo/deoplete.nvim', { 'do' : function('DoRemote') }
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
+Plug 'davidhalter/jedi-vim'
+Plug 'xolox/vim-lua-ftplugin'
+Plug 'guns/vim-clojure-static'
+Plug 'chase/vim-ansible-yaml'
 Plug 'Shougo/echodoc'
+Plug 'ensime/ensime-vim', { 'do' : function('DoRemote') }
+Plug 'derekwyatt/vim-scala'
 
 " Web dev
 " npm install tern in bundles/tern
@@ -83,7 +80,7 @@ if g:web_dev_plugins == 1
     Plug 'Valloric/MatchTagAlways'
     Plug 'pangloss/vim-javascript'
     Plug 'othree/javascript-libraries-syntax.vim'
-    Plug 'ternjs/tern_for_vim', { 'do': 'npm install' }
+    Plug 'ternjs/tern_for_vim', { 'do' : 'npm install' }
     Plug 'carlitux/deoplete-ternjs'
     Plug 'moll/vim-node'
     Plug 'briancollins/vim-jst'
@@ -101,6 +98,7 @@ if vimplugInstalled == 1
     echo "Installing Plugins, please ignore key map error messages"
     echo ""
     PlugInstall
+    UpdateRemotePlugins
 endif
 
 "---------------------------------------------------------------------------}}}
@@ -144,10 +142,6 @@ set showcmd
 set hlsearch
 " Incremental seatch
 set incsearch
-
-"---------------------------------------------------------------------------}}}
-" Usability options {{{
-"
 " Use case insensitive search, except when using capital letters
 set ignorecase
 set smartcase
@@ -175,16 +169,14 @@ set mouse=a
 set cmdheight=2
 " Display line numbers on the left
 set number
+set relativenumber
 " Quickly time out on keycodes, but never time out on mappings
-set notimeout ttimeout ttimeoutlen=50
+set notimeout ttimeout ttimeoutlen=200
 " Use <F11> to toggle between 'paste' and 'nopaste'
 set pastetoggle=<F11>
 " Natural slpit opening
 set splitbelow
 set splitright
-" minibuffexplorer split on top
-"let g:miniBufExplBRSplit=0
-
 "---------------------------------------------------------------------------}}}
 " Indentation options {{{
 "
@@ -200,6 +192,7 @@ set cinkeys-=0#
 "set shiftwidth=2
 "set tabstop=2
 autocmd Filetype javascript setlocal ts=2 sw=2 expandtab
+autocmd Filetype lua setlocal ts=2 sw=2 expandtab
 
 "---------------------------------------------------------------------------}}}
 " Mappings {{{
@@ -209,25 +202,29 @@ map Y y$
 " Map <F3> (redraw screen) to also turn off search highlighting until the
 nnoremap <F3> :nohl<CR>
 " Gundo toggle
-nnoremap <F5> :GundoToggle<CR>
+nnoremap <F5> :UndotreeToggle<CR>
 " Tagbar toggle
-nmap <F8> :TagbarToggle<CR>
+nnoremap <F8> :TagbarToggle<CR>
 " Switch buffers using alt+number
-nnoremap <M-1> :1b<CR>
-nnoremap <M-2> :2b<CR>
-nnoremap <M-3> :3b<CR>
-nnoremap <M-4> :4b<CR>
-nnoremap <M-5> :5b<CR>
-nnoremap <M-6> :6b<CR>
-nnoremap <M-7> :7b<CR>
-nnoremap <M-8> :8b<CR>
-nnoremap <M-9> :9b<CR>
-nnoremap <M-0> :10b<CR>
+nnoremap <A-1> :1b<CR>
+nnoremap <A-2> :2b<CR>
+nnoremap <A-3> :3b<CR>
+nnoremap <A-4> :4b<CR>
+nnoremap <A-5> :5b<CR>
+nnoremap <A-6> :6b<CR>
+nnoremap <A-7> :7b<CR>
+nnoremap <A-8> :8b<CR>
+nnoremap <A-9> :9b<CR>
+nnoremap <A-0> :10b<CR>
 " Switch windows using ctrl+hjkl
-noremap <C-Down>     <C-W>j
-noremap <C-Up>       <C-W>k
-noremap <C-Left>     <C-W>h
-noremap <C-Right>    <C-W>l
+inoremap <C-W> <C-O><C-W>
+noremap <C-J> <C-W>j
+noremap <C-K> <C-W>k
+noremap <C-H> <C-W>h
+noremap <C-L> <C-W>l
+" Nvim terminal mapping
+tnoremap <esc> <C-\><C-n>
+
 "---------------------------------------------------------------------------}}}
 " External Plugin Settings {{{
 if g:is_exuberant
@@ -235,7 +232,7 @@ if g:is_exuberant
 endif
 source ~/.vim/plugin_settings/ultisnips.vim
 source ~/.config/nvim/plugin-settings/deoplete.vim
-source ~/.config/nvim/plugin-settings/jed-vim.vim
+source ~/.config/nvim/plugin-settings/jedi-vim.vim
 source ~/.config/nvim/plugin-settings/lua-ftplugin.vim
 source ~/.config/nvim/plugin-settings/deoplete-ternjs.vim
 source ~/.config/nvim/plugin-settings/unite.vim
@@ -243,13 +240,9 @@ source ~/.config/nvim/plugin-settings/airline.vim
 source ~/.config/nvim/plugin-settings/syntastic.vim
 source ~/.config/nvim/plugin-settings/indent-guides.vim
 source ~/.config/nvim/plugin-settings/echodoc.vim
-"---------------------------------------------------------------------------}}}
-" GVim Settings {{{
-set guioptions-=L
-set guioptions-=r
-set guioptions+=c
+source ~/.config/nvim/plugin-settings/ensime-vim.vim
 "---------------------------------------------------------------------------}}}
 "Local Machine Settings
-if filereadable(expand('~/.vimrc.local'))
-    source ~/.vimrc.local
+if filereadable(expand('~/.nvimrc.local'))
+    source ~/.nvimrc.local
 endif

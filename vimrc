@@ -145,6 +145,7 @@ elseif s:autocompleter == 'neo'
                 \ 'insert' : 1,
                 \ }})
     NeoBundle 'davidhalter/jedi-vim'
+    NeoBundle 'derekwyatt/vim-scala'
     "NeoBundle 'osyo-manga/vim-reunions'
     "NeoBundle 'osyo-manga/vim-marching'
 elseif s:autocompleter == 'ycm'
