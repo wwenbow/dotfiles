@@ -50,7 +50,9 @@ call dein#add('majutsushi/tagbar')
 call dein#add('scrooloose/syntastic')
 call dein#add('simnalamburt/vim-mundo')
 call dein#add('mbbill/undotree')
-call dein#add('altercation/vim-colors-solarized')
+" call dein#add('altercation/vim-colors-solarized')
+call dein#add('frankier/neovim-colors-solarized-truecolor-only')
+call dein#add('romainl/flattened')
 call dein#add('sickill/vim-monokai')
 call dein#add('bling/vim-airline')
 call dein#add('vim-airline/vim-airline-themes')
@@ -115,8 +117,9 @@ endif
 "---------------------------------------------------------------------------}}}
 " Colorscheme and Fonts {{{
 set background=dark
+let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 colorscheme solarized
-set t_Co=256
+" set t_Co=256
 
 "---------------------------------------------------------------------------}}}
 " Features {{{

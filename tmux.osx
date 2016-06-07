@@ -1,6 +1,5 @@
 # Mouse mode
 set-option -g -q mouse on
-set -g mouse-utf8 off
 
 # vi mode
 setw -g mode-keys vi
