@@ -38,8 +38,8 @@ let g:is_exuberant = 0
 let g:web_dev_plugins = 1
 
 " Overrides
-if filereadable(expand('~/nvimrc.local'))
-    source ~/.nvimrc.local
+if filereadable(expand('~/vimrc.local'))
+    source ~/.vimrc.local
 endif
 
 " My bundles here:
@@ -48,7 +48,6 @@ call dein#add('tpope/vim-fugitive')
 call dein#add('scrooloose/nerdtree')
 call dein#add('majutsushi/tagbar')
 call dein#add('scrooloose/syntastic')
-call dein#add('simnalamburt/vim-mundo')
 call dein#add('mbbill/undotree')
 call dein#add('altercation/vim-colors-solarized')
 call dein#add('sickill/vim-monokai')
@@ -240,21 +239,21 @@ tnoremap <esc> <C-\><C-n>
 "---------------------------------------------------------------------------}}}
 " External Plugin Settings {{{
 if g:is_exuberant
-    source ~/dotfiles/.vim/plugin_settings/easytags.vim
+    source ~/dotfiles/vim/plugin-settings/easytags.vim
 endif
-source ~/.vim/plugin_settings/ultisnips.vim
-source ~/.config/nvim/plugin-settings/deoplete.vim
-source ~/.config/nvim/plugin-settings/jedi-vim.vim
-source ~/.config/nvim/plugin-settings/lua-ftplugin.vim
-source ~/.config/nvim/plugin-settings/deoplete-ternjs.vim
-source ~/.config/nvim/plugin-settings/unite.vim
-source ~/.config/nvim/plugin-settings/airline.vim
-source ~/.config/nvim/plugin-settings/syntastic.vim
-source ~/.config/nvim/plugin-settings/indent-guides.vim
-source ~/.config/nvim/plugin-settings/echodoc.vim
-source ~/.config/nvim/plugin-settings/ensime-vim.vim
+source ~/dotfiles/vim/plugin-settings/ultisnips.vim
+source ~/dotfiles/vim/plugin-settings/unite.vim
+source ~/dotfiles/vim/plugin-settings/airline.vim
+source ~/dotfiles/vim/plugin-settings/syntastic.vim
+source ~/dotfiles/vim/plugin-settings/indent-guides.vim
+source ~/dotfiles/vim/plugin-settings/echodoc.vim
+source ~/dotfiles/nvim/plugin-settings/deoplete.vim
+source ~/dotfiles/nvim/plugin-settings/jedi-vim.vim
+source ~/dotfiles/nvim/plugin-settings/lua-ftplugin.vim
+source ~/dotfiles/nvim/plugin-settings/deoplete-ternjs.vim
+source ~/dotfiles/nvim/plugin-settings/ensime-vim.vim
 "---------------------------------------------------------------------------}}}
 "Local Machine Settings
-if filereadable(expand('~/.nvimrc.local'))
-    source ~/.nvimrc.local
+if filereadable(expand('~/.vimrc.local'))
+    source ~/.vimrc.local
 endif

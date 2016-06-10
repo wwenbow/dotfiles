@@ -76,7 +76,7 @@ NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'majutsushi/tagbar'
 NeoBundle 'scrooloose/syntastic'
-NeoBundle 'sjl/gundo.vim'
+NeoBundle 'mbbill/undotree'
 NeoBundle 'altercation/vim-colors-solarized'
 NeoBundle 'sickill/vim-monokai'
 NeoBundle 'bling/vim-airline'
@@ -95,6 +95,7 @@ NeoBundle 'Shougo/vimproc', {
             \ }
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/neomru.vim'
+NeoBundle 'Shougo/neoyank.vim'
 NeoBundle 'xolox/vim-misc'
 NeoBundle 'xolox/vim-lua-ftplugin'
 NeoBundle 'nathanaelkane/vim-indent-guides'
@@ -291,8 +292,9 @@ set mouse=a
 set cmdheight=2
 " Display line numbers on the left
 set number
+set relativenumber
 " Quickly time out on keycodes, but never time out on mappings
-set notimeout ttimeout ttimeoutlen=200
+set notimeout ttimeout ttimeoutlen=50
 " Use <F11> to toggle between 'paste' and 'nopaste'
 set pastetoggle=<F11>
 " Natural slpit opening
@@ -316,6 +318,7 @@ set cinkeys-=0#
 "set shiftwidth=2
 "set tabstop=2
 autocmd Filetype javascript setlocal ts=2 sw=2 expandtab
+autocmd Filetype lua setlocal ts=2 sw=2 expandtab
 
 "---------------------------------------------------------------------------}}}
 " Mappings {{{
@@ -325,9 +328,9 @@ map Y y$
 " Map <F3> (redraw screen) to also turn off search highlighting until the
 nnoremap <F3> :nohl<CR>
 " Gundo toggle
-nnoremap <F5> :GundoToggle<CR>
+nnoremap <F5> :UndotreeToggle<CR>
 " Tagbar toggle
-nmap <F8> :TagbarToggle<CR>
+nnoremap <F8> :TagbarToggle<CR>
 " Switch buffers using alt+number
 nnoremap <M-1> :1b<CR>
 nnoremap <M-2> :2b<CR>
@@ -340,116 +343,43 @@ nnoremap <M-8> :8b<CR>
 nnoremap <M-9> :9b<CR>
 nnoremap <M-0> :10b<CR>
 " Switch windows using ctrl+hjkl
-noremap <C-Down>     <C-W>j
-noremap <C-Up>       <C-W>k
-noremap <C-Left>     <C-W>h
-noremap <C-Right>    <C-W>l
-
-"---------------------------------------------------------------------------}}}
-" Vim-Latex Settings {{{
-"
-" REQUIRED. This makes vim invoke Latex-Suite when you open a tex file.
-filetype plugin on
-
-" IMPORTANT: win32 users will need to have 'shellslash' set so that latex
-" can be called correctly.
-set shellslash
-
-" IMPORTANT: grep will sometimes skip displaying the file name if you
-" search in a singe file. This will confuse Latex-Suite. Set your grep
-" program to always generate a file-name.
-set grepprg=grep\ -nH\ $*
-
-" OPTIONAL: This enables automatic indentation as you type.
-filetype indent on
-
-" OPTIONAL: Starting with Vim 7, the filetype of empty .tex files defaults to
-" 'plaintex' instead of 'tex', which results in vim-latex not being loaded.
-" The following changes the default filetype back to 'tex':
-let g:tex_flavor='latex'
-let g:Tex_DefaultTargetFormat='pdf'
-let g:Tex_UseMakefile=0
-let g:Tex_BibtexFlavor='bibtex8 -H'
-"let g:Tex_BibtexFlavor='biber'
-let g:Tex_MultipleCompileFormats='dvi,pdf'
-
-"---------------------------------------------------------------------------}}}
-" Airline {{{
-"let g:airline_powerline_fonts = 1
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
-let g:airline#extensions#tabline#buffer_nr_show = 1
-
-if !exists('g:airline_symbols')
-    let g:airline_symbols = {}
-endif
-let g:airline_powerline_fonts = 0
-let g:airline_left_sep = ''
-let g:airline_right_sep = ''
-let g:airline_symbols.readonly = ''
-
-
-if has('win32') || has('win64')
-    let g:airline_powerline_fonts = 0
-    let g:airline_left_sep = ''
-    let g:airline_right_sep = ''
-endif
-
-"---------------------------------------------------------------------------}}}
-" Unite {{{
-let g:unite_source_history_yank_enable = 1
-call unite#filters#matcher_default#use(['matcher_fuzzy'])
-nnoremap <leader>t :<C-u>Unite -no-split -buffer-name=files   -start-insert file_rec/async<cr>
-nnoremap <leader>f :<C-u>Unite -no-split -buffer-name=files   -start-insert file<cr>
-nnoremap <leader>g :<C-u>Unite -no-split grep:.<cr>
-nnoremap <leader>r :<C-u>Unite -no-split -buffer-name=mru     -start-insert file_mru<cr>
-nnoremap <leader>y :<C-u>Unite -no-split -buffer-name=yank    history/yank<cr>
-nnoremap <leader>b :<C-u>Unite -no-split -buffer-name=buffer -quick-match  buffer<cr>
-
-" Custom mappings for the unite buffer
-autocmd FileType unite call s:unite_settings()
-function! s:unite_settings()
-  " Play nice with supertab
-  let b:SuperTabDisabled=1
-  " Enable navigation with control-j and control-k in insert mode
-  imap <buffer> <C-j>   <Plug>(unite_select_next_line)
-  imap <buffer> <C-k>   <Plug>(unite_select_previous_line)
-endfunction
-
-"---------------------------------------------------------------------------}}}
-" Indent Guides {{{
-let g:indent_guides_guide_size = 1
+inoremap <C-W> <C-O><C-W>
+noremap <C-J> <C-W>j
+noremap <C-K> <C-W>k
+noremap <C-H> <C-W>h
+noremap <C-L> <C-W>l
 
 "---------------------------------------------------------------------------}}}
 " External Plugin Settings {{{
+source ~/dotfiles/vim/plugin-settings/airline.vim
+source ~/dotfiles/vim/plugin-settings/unite.vim
+source ~/dotfiles/vim/plugin-settings/indent-guides.vim
+source ~/dotfiles/vim/plugin-settings/vim-latex.vim
+source ~/dotfiles/vim/plugin-settings/syntastic.vim
+source ~/dotfiles/vim/plugin-settings/echodoc.vim
 if g:is_exuberant
-    source ~/dotfiles/.vim/plugin_settings/easytags.vim
+    source ~/dotfiles/.vim/plugin-settings/easytags.vim
 endif
 " Autocompleter
 if s:autocompleter == 'old'
-    source ~/.vim/plugin_settings/neocomplcache.vim
-    source ~/.vim/plugin_settings/neosnippet.vim
+    source ~/.vim/plugin-settings/neocomplcache.vim
+    source ~/.vim/plugin-settings/neosnippet.vim
 elseif s:autocompleter == 'neo'
-    source ~/.vim/plugin_settings/neocomplete.vim
-    "source ~/.vim/plugin_settings/vim-marching.vim
-    source ~/.vim/plugin_settings/jedi-vim.vim
-    source ~/.vim/plugin_settings/lua-ftplugin.vim
-    source ~/.vim/plugin_settings/ultisnips.vim
+    source ~/.vim/plugin-settings/neocomplete.vim
+    "source ~/.vim/plugin-settings/vim-marching.vim
+    source ~/.vim/plugin-settings/jedi-vim.vim
+    source ~/.vim/plugin-settings/lua-ftplugin.vim
+    source ~/.vim/plugin-settings/ultisnips.vim
     let g:echodoc_enable_at_startup = 1
 elseif s:autocompleter == 'ycm'
-    source ~/.vim/plugin_settings/ycm.vim
-    source ~/.vim/plugin_settings/ultisnips.vim
+    source ~/.vim/plugin-settings/ycm.vim
+    source ~/.vim/plugin-settings/ultisnips.vim
 endif
 "---------------------------------------------------------------------------}}}
 " GVim Settings {{{
 set guioptions-=L
 set guioptions-=r
 set guioptions+=c
-"---------------------------------------------------------------------------}}}
-" Syntastic Settings {{{
-let g:syntastic_mode_map = { 'mode': 'active',
-                           \ 'active_filetypes': ['html', 'js', 'py'],
-                           \ 'passive_filetypes': ['java'] }
 "---------------------------------------------------------------------------}}}
 "Local Machine Settings
 if filereadable(expand('~/.vimrc.local'))
