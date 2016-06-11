@@ -99,7 +99,8 @@ NeoBundle 'Shougo/neoyank.vim'
 NeoBundle 'xolox/vim-misc'
 NeoBundle 'xolox/vim-lua-ftplugin'
 NeoBundle 'nathanaelkane/vim-indent-guides'
-NeoBundle 'mileszs/ack.vim'
+NeoBundle 'mhinz/vim-grepper'
+NeoBundle 'airblade/vim-gitgutter'
 NeoBundle 'guns/vim-clojure-static'
 NeoBundle 'kien/rainbow_parentheses.vim'
 NeoBundle 'chase/vim-ansible-yaml'
@@ -326,11 +327,13 @@ autocmd Filetype lua setlocal ts=2 sw=2 expandtab
 " Map Y to act like D and C, i.e. to yank until EOL, rather than act as yy,
 map Y y$
 " Map <F3> (redraw screen) to also turn off search highlighting until the
-nnoremap <F3> :nohl<CR>
+nnoremap <F8> :nohl<CR>
+" NERD toggle
+nnoremap <F2> :NERDTreeToggle<CR>
 " Gundo toggle
-nnoremap <F5> :UndotreeToggle<CR>
+nnoremap <F3> :UndotreeToggle<CR>
 " Tagbar toggle
-nnoremap <F8> :TagbarToggle<CR>
+nnoremap <F4> :TagbarToggle<CR>
 " Switch buffers using alt+number
 nnoremap <M-1> :1b<CR>
 nnoremap <M-2> :2b<CR>

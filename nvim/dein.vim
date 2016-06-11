@@ -66,6 +66,10 @@ call dein#add('nathanaelkane/vim-indent-guides')
 call dein#add('kien/rainbow_parentheses.vim')
 call dein#add('tomtom/tcomment_vim')
 call dein#add('Lokaltog/vim-easymotion')
+call dein#add('airblade/vim-gitgutter')
+call dein#add('mhinz/vim-grepper')
+call dein#add('kassio/neoterm') " neovim
+call dein#add('bfredl/nvim-ipy') " neovim
 
 call dein#add('Shougo/deoplete.nvim')
 call dein#add('SirVer/ultisnips')
@@ -88,7 +92,7 @@ if g:web_dev_plugins == 1
     call dein#add('pangloss/vim-javascript')
     call dein#add('othree/javascript-libraries-syntax.vim')
     call dein#add('ternjs/tern_for_vim', { 'build' : 'npm install'})
-    call dein#add('carlitux/deoplete-ternjs')
+    call dein#add('carlitux/deoplete-ternjs') " neovim
     call dein#add('moll/vim-node')
     call dein#add('briancollins/vim-jst')
 endif
@@ -211,11 +215,13 @@ autocmd Filetype lua setlocal ts=2 sw=2 expandtab
 " Map Y to act like D and C, i.e. to yank until EOL, rather than act as yy,
 map Y y$
 " Map <F3> (redraw screen) to also turn off search highlighting until the
-nnoremap <F3> :nohl<CR>
+nnoremap <F8> :nohl<CR>
+" NERD toggle
+nnoremap <F2> :NERDTreeToggle<CR>
 " Gundo toggle
-nnoremap <F5> :UndotreeToggle<CR>
+nnoremap <F3> :UndotreeToggle<CR>
 " Tagbar toggle
-nnoremap <F8> :TagbarToggle<CR>
+nnoremap <F4> :TagbarToggle<CR>
 " Switch buffers using alt+number
 nnoremap <A-1> :1b<CR>
 nnoremap <A-2> :2b<CR>
@@ -233,8 +239,15 @@ noremap <C-J> <C-W>j
 noremap <C-K> <C-W>k
 noremap <C-H> <C-W>h
 noremap <C-L> <C-W>l
+" Fast resize
+if bufwinnr(1)
+  map + <C-W>+
+  map - <C-W>-
+endif
+
 " Nvim terminal mapping
 tnoremap <esc> <C-\><C-n>
+command! Term :sp | term
 
 "---------------------------------------------------------------------------}}}
 " External Plugin Settings {{{
@@ -252,6 +265,7 @@ source ~/dotfiles/nvim/plugin-settings/jedi-vim.vim
 source ~/dotfiles/nvim/plugin-settings/lua-ftplugin.vim
 source ~/dotfiles/nvim/plugin-settings/deoplete-ternjs.vim
 source ~/dotfiles/nvim/plugin-settings/ensime-vim.vim
+source ~/dotfiles/nvim/plugin-settings/nvim-ipy.vim
 "---------------------------------------------------------------------------}}}
 "Local Machine Settings
 if filereadable(expand('~/.vimrc.local'))
