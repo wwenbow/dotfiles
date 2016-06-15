@@ -1,54 +1,25 @@
-" URL: http://vim.wikia.com/wiki/Example_vimrc
-" Authors: http://vim.wikia.com/wiki/Vim_on_Freenode
-" Description: A minimal, but feature rich, example .vimrc. If you are a
-"              newbie, basing your first .vimrc on this file is a good choice.
-"              If you're a more advanced user, building your own .vimrc based
-"              on this file is still a good idea.
-"------------------------------------------------------------------------------
-" Set 'nocompatible' to ward off unexpected things that your distro might
-" have made, as well as sanely reset options when re-sourcing .vimrc
-set nocompatible
-
 " Fold vimrc
 set fdm=marker
 
-" NeoBundle Settings {{{
-" Setting up NeoBundle - the vim plugin bundler
-
-let iCanHazNeoBundle=1
-if has('win32') || has('win64')
-	let neobundle_readme=expand('$HOME/vimfiles/bundle/neobundle.vim/README.md')
-else
-	let neobundle_readme=expand('~/.vim/bundle/neobundle.vim/README.md')
+" Plugin Settings {{{
+if &compatible
+  set nocompatible               " Be iMproved
 endif
 
-if !filereadable(neobundle_readme)
-    echo "Installing neobundle.."
+let vimplugInstalled=0
+let plugvim=expand('~/dotfiles/vim/autoload/plug.vim')
+
+if !filereadable(plugvim)
+    echo "Installing vim-plug.."
     echo ""
-    if has('win32') || has('win64')
-        silent !mkdir \%HOMEPATH\%\vimfiles\bundle
-        silent !git clone https://github.com/Shougo/neobundle.vim \%HOMEPATH\%\vimfiles\bundle\neobundle.vim
-    else
-        silent !mkdir -p ~/.vim/bundle
-        silent !git clone https://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
-    endif
-    let iCanHazNeoBundle=0
+    silent !curl -fLo ~/dotfiles/vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    let vimplugInstalled=1
 endif
 
-if has('win32') || has('win64')
-	set runtimepath+=~/vimfiles/bundle/neobundle.vim/
-	let path='~/vimfiles/bundle'
-	call neobundle#begin(expand(path))
-else
-	set runtimepath+=~/.vim/bundle/neobundle.vim/
-	let path='~/.vim/bundle'
-	call neobundle#begin(expand(path))
-endif
+call plug#begin('~/dotfiles/vim/plugged')
 
 "--------------------------------------------------------------------------}}}
 " Bundles {{{
-" let NeoBundle manage NeoBundle
-" required!
 
 " Choose autocompleter
 if v:version <= 703
@@ -68,116 +39,90 @@ if filereadable(expand('~/.vimrc.local'))
     source ~/.vimrc.local
 endif
 
-NeoBundleFetch 'Shougo/neobundle.vim'
-
 " My bundles here:
 " original repos on GitHub
-NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'scrooloose/nerdtree'
-NeoBundle 'majutsushi/tagbar'
-NeoBundle 'scrooloose/syntastic'
-NeoBundle 'mbbill/undotree'
-NeoBundle 'altercation/vim-colors-solarized'
-NeoBundle 'sickill/vim-monokai'
-NeoBundle 'bling/vim-airline'
-NeoBundle 'vim-airline/vim-airline-themes'
-NeoBundle 'kris89/vim-multiple-cursors'
-NeoBundle 'kien/ctrlp.vim'
-NeoBundle 'godlygeek/tabular' "easily make tables
-NeoBundle 'tpope/vim-surround' "manipulate parenthesis
-NeoBundle 'Shougo/vimproc', {
-            \ 'build' : {
-            \     'windows' : 'make -f make_mingw32.mak',
-            \     'cygwin' : 'make -f make_cygwin.mak',
-            \     'mac' : 'make -f make_mac.mak',
-            \     'unix' : 'make -f make_unix.mak',
-            \    },
-            \ }
-NeoBundle 'Shougo/unite.vim'
-NeoBundle 'Shougo/neomru.vim'
-NeoBundle 'Shougo/neoyank.vim'
-NeoBundle 'xolox/vim-misc'
-NeoBundle 'xolox/vim-lua-ftplugin'
-NeoBundle 'nathanaelkane/vim-indent-guides'
-NeoBundle 'mhinz/vim-grepper'
-NeoBundle 'airblade/vim-gitgutter'
-NeoBundle 'guns/vim-clojure-static'
-NeoBundle 'kien/rainbow_parentheses.vim'
-NeoBundle 'chase/vim-ansible-yaml'
-NeoBundle 'tomtom/tcomment_vim'
+Plug 'tpope/vim-fugitive'
+Plug 'scrooloose/nerdtree'
+Plug 'majutsushi/tagbar'
+Plug 'scrooloose/syntastic'
+Plug 'mbbill/undotree'
+Plug 'altercation/vim-colors-solarized'
+Plug 'sickill/vim-monokai'
+Plug 'bling/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'kris89/vim-multiple-cursors'
+Plug 'kien/ctrlp.vim'
+Plug 'godlygeek/tabular' "easily make tables
+Plug 'tpope/vim-surround' "manipulate parenthesis
+Plug 'Shougo/vimproc.vim', {'do' : 'make'}
+Plug 'Shougo/unite.vim'
+Plug 'Shougo/neomru.vim'
+Plug 'Shougo/neoyank.vim'
+Plug 'xolox/vim-misc'
+Plug 'xolox/vim-lua-ftplugin'
+Plug 'nathanaelkane/vim-indent-guides'
+Plug 'mhinz/vim-grepper'
+Plug 'airblade/vim-gitgutter'
+Plug 'guns/vim-clojure-static'
+Plug 'kien/rainbow_parentheses.vim'
+Plug 'chase/vim-ansible-yaml'
+Plug 'tomtom/tcomment_vim'
+Plug 'embear/vim-localvimrc'
 
 " Web dev
 " npm install tern in bundles/tern
 " npm install -g jshint
 if g:web_dev_plugins == 1
-    NeoBundle 'mattn/emmet-vim'
-    NeoBundle 'tmhedberg/matchit'
-    NeoBundle 'Valloric/MatchTagAlways'
-    NeoBundle 'pangloss/vim-javascript'
-    NeoBundle 'othree/javascript-libraries-syntax.vim'
-    NeoBundle 'marijnh/tern_for_vim', { 'build' : { 'others' : 'npm install' }, }
-    NeoBundle 'moll/vim-node'
-    NeoBundle 'briancollins/vim-jst'
+    Plug 'mattn/emmet-vim'
+    Plug 'tmhedberg/matchit'
+    Plug 'Valloric/MatchTagAlways'
+    Plug 'pangloss/vim-javascript'
+    Plug 'othree/javascript-libraries-syntax.vim'
+    Plug 'ternjs/tern_for_vim', { 'do' : 'npm install' }
+    Plug 'moll/vim-node'
+    Plug 'briancollins/vim-jst'
 endif
 
 
 if v:version >= 703
-    NeoBundle 'Lokaltog/vim-easymotion'
+    Plug 'Lokaltog/vim-easymotion'
 endif
 
 if g:is_exuberant
-    NeoBundle 'xolox/vim-easytags'
+    Plug 'xolox/vim-easytags'
 endif
 
 " autocompleters
 if s:autocompleter == 'old'
-    NeoBundle 'Shougo/neocomplcache.vim'
-    NeoBundle 'Shougo/neosnippet.vim'
-    NeoBundle 'Shougo/neosnippet-snippets'
+    Plug 'Shougo/neocomplcache.vim'
+    Plug 'Shougo/neosnippet.vim'
+    Plug 'Shougo/neosnippet-snippets'
 elseif s:autocompleter == 'neo'
-    NeoBundle 'Shougo/neocomplete.vim'
-    "NeoBundle 'Shougo/neosnippet.vim'
-    "NeoBundle 'Shougo/neosnippet-snippets'
-    NeoBundle 'SirVer/ultisnips'
-    NeoBundle 'honza/vim-snippets'
-    NeoBundle 'Shougo/echodoc', '', 'default'
-    call neobundle#config('echodoc', {
-                \ 'lazy' : 1,
-                \ 'autoload' : {
-                \ 'insert' : 1,
-                \ }})
-    NeoBundle 'davidhalter/jedi-vim'
-    NeoBundle 'derekwyatt/vim-scala'
-    "NeoBundle 'osyo-manga/vim-reunions'
-    "NeoBundle 'osyo-manga/vim-marching'
+    Plug 'Shougo/neocomplete.vim'
+    "Plug 'Shougo/neosnippet.vim'
+    "Plug 'Shougo/neosnippet-snippets'
+    Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
+    Plug 'Shougo/echodoc'
+    Plug 'davidhalter/jedi-vim'
+    Plug 'derekwyatt/vim-scala'
+    "Plug 'ensime/ensime-vim'
+    "Plug 'osyo-manga/vim-reunions'
+    "Plug 'osyo-manga/vim-marching'
 elseif s:autocompleter == 'ycm'
-    NeoBundle 'Valloric/YouCompleteMe' , {
-                \ 'build' : {
-                \    'unix' : './install.py',
-                \    'mac' : './install.py',
-                \    },
-                \ }
-    NeoBundle 'SirVer/ultisnips'
-    NeoBundle 'honza/vim-snippets'
+    Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
+    Plug 'SirVer/ultisnips'
+    Plug 'honza/vim-snippets'
 endif
 
-" Sourceforge
-"NeoBundle 'git://git.code.sf.net/p/vim-latex/vim-latex'
-"
-" scripts from http://vim-scripts.org/vim/scripts.html
+call plug#end()
 
 filetype plugin indent on     " required!
 
-NeoBundleCheck
-
-if iCanHazNeoBundle == 0
-    echo "Installing Bundles, please ignore key map error messages"
+if vimplugInstalled == 1
+    echo "Installing Plugins, please ignore key map error messages"
     echo ""
-    NeoBundleInstall
+    PlugInstall
 endif
-
-call neobundle#end()
-" Setting up NeoBundle - the vim plugin bundler end
 
 "---------------------------------------------------------------------------}}}
 " Colorscheme and Fonts {{{
@@ -262,10 +207,6 @@ set showcmd
 set hlsearch
 " Incremental seatch
 set incsearch
-
-"---------------------------------------------------------------------------}}}
-" Usability options {{{
-"
 " Use case insensitive search, except when using capital letters
 set ignorecase
 set smartcase
@@ -301,8 +242,6 @@ set pastetoggle=<F11>
 " Natural slpit opening
 set splitbelow
 set splitright
-" minibuffexplorer split on top
-"let g:miniBufExplBRSplit=0
 
 "---------------------------------------------------------------------------}}}
 " Indentation options {{{
@@ -359,7 +298,7 @@ source ~/dotfiles/vim/plugin-settings/unite.vim
 source ~/dotfiles/vim/plugin-settings/indent-guides.vim
 source ~/dotfiles/vim/plugin-settings/vim-latex.vim
 source ~/dotfiles/vim/plugin-settings/syntastic.vim
-source ~/dotfiles/vim/plugin-settings/echodoc.vim
+source ~/dotfiles/vim/plugin-settings/vim-localvimrc.vim
 if g:is_exuberant
     source ~/dotfiles/.vim/plugin-settings/easytags.vim
 endif
@@ -369,11 +308,11 @@ if s:autocompleter == 'old'
     source ~/.vim/plugin-settings/neosnippet.vim
 elseif s:autocompleter == 'neo'
     source ~/.vim/plugin-settings/neocomplete.vim
-    "source ~/.vim/plugin-settings/vim-marching.vim
     source ~/.vim/plugin-settings/jedi-vim.vim
     source ~/.vim/plugin-settings/lua-ftplugin.vim
     source ~/.vim/plugin-settings/ultisnips.vim
-    let g:echodoc_enable_at_startup = 1
+    source ~/dotfiles/vim/plugin-settings/echodoc.vim
+    "source ~/.vim/plugin-settings/vim-marching.vim
 elseif s:autocompleter == 'ycm'
     source ~/.vim/plugin-settings/ycm.vim
     source ~/.vim/plugin-settings/ultisnips.vim

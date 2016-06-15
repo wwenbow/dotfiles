@@ -68,6 +68,7 @@ call dein#add('tomtom/tcomment_vim')
 call dein#add('Lokaltog/vim-easymotion')
 call dein#add('airblade/vim-gitgutter')
 call dein#add('mhinz/vim-grepper')
+call dein#add('embear/vim-localvimrc')
 call dein#add('kassio/neoterm') " neovim
 call dein#add('bfredl/nvim-ipy') " neovim
 
@@ -260,6 +261,7 @@ source ~/dotfiles/vim/plugin-settings/airline.vim
 source ~/dotfiles/vim/plugin-settings/syntastic.vim
 source ~/dotfiles/vim/plugin-settings/indent-guides.vim
 source ~/dotfiles/vim/plugin-settings/echodoc.vim
+source ~/dotfiles/vim/plugin-settings/vim-localvimrc.vim
 source ~/dotfiles/nvim/plugin-settings/deoplete.vim
 source ~/dotfiles/nvim/plugin-settings/jedi-vim.vim
 source ~/dotfiles/nvim/plugin-settings/lua-ftplugin.vim

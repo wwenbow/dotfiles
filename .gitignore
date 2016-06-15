@@ -1,5 +1,7 @@
 vim/bundle/
 vim/.netrwhist
+vim/autoload
+vim/plugged
 nvim/autoload
 nvim/plugged
 nvim/dein
