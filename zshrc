@@ -52,3 +52,4 @@ fi
 
 # Fzf source
 source ~/.fzf.zsh
+source ~/.config/up/up.sh

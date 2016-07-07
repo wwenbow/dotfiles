@@ -16,6 +16,8 @@ if !filereadable(plugvim)
     let vimplugInstalled=1
 endif
 
+set rtp+=~/.fzf
+
 call plug#begin('~/dotfiles/vim/plugged')
 
 "--------------------------------------------------------------------------}}}
@@ -50,11 +52,11 @@ Plug 'altercation/vim-colors-solarized'
 Plug 'sickill/vim-monokai'
 Plug 'w0ng/vim-hybrid'
 Plug 'morhetz/gruvbox'
-Plug 'bling/vim-airline'
+Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'kris89/vim-multiple-cursors'
-Plug 'kien/ctrlp.vim'
-Plug 'godlygeek/tabular' "easily make tables
+Plug 'terryma/vim-multiple-cursors'
+Plug 'junegunn/vim-easy-align'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'tpope/vim-surround' "manipulate parenthesis
 Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 Plug 'Shougo/unite.vim'
@@ -62,11 +64,9 @@ Plug 'Shougo/neomru.vim'
 Plug 'Shougo/neoyank.vim'
 Plug 'xolox/vim-misc'
 Plug 'xolox/vim-lua-ftplugin'
-Plug 'nathanaelkane/vim-indent-guides'
 Plug 'mhinz/vim-grepper'
 Plug 'airblade/vim-gitgutter'
 Plug 'guns/vim-clojure-static'
-Plug 'kien/rainbow_parentheses.vim'
 Plug 'chase/vim-ansible-yaml'
 Plug 'tomtom/tcomment_vim'
 Plug 'embear/vim-localvimrc'
@@ -236,7 +236,7 @@ set mouse=a
 set cmdheight=2
 " Display line numbers on the left
 set number
-set relativenumber
+"set relativenumber "makes some files slow
 " Quickly time out on keycodes, but never time out on mappings
 set notimeout ttimeout ttimeoutlen=50
 " Use <F11> to toggle between 'paste' and 'nopaste'
@@ -301,6 +301,7 @@ source ~/dotfiles/vim/plugin-settings/indent-guides.vim
 source ~/dotfiles/vim/plugin-settings/vim-latex.vim
 source ~/dotfiles/vim/plugin-settings/syntastic.vim
 source ~/dotfiles/vim/plugin-settings/vim-localvimrc.vim
+source ~/dotfiles/vim/plugin-settings/fzf.vim
 if g:is_exuberant
     source ~/dotfiles/.vim/plugin-settings/easytags.vim
 endif

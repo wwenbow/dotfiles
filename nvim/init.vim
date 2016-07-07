@@ -1,1 +1,1 @@
-dein.vim
+vim-plug.vim

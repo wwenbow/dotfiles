@@ -27,8 +27,8 @@ let g:is_exuberant = 0
 let g:web_dev_plugins = 1
 
 " Overrides
-if filereadable(expand('~/nvimrc.local'))
-    source ~/.nvimrc.local
+if filereadable(expand('~/vimrc.local'))
+    source ~/.vimrc.local
 endif
 
 " My bundles here:
@@ -37,25 +37,29 @@ Plug 'tpope/vim-fugitive'
 Plug 'scrooloose/nerdtree'
 Plug 'majutsushi/tagbar'
 Plug 'scrooloose/syntastic'
-Plug 'simnalamburt/vim-mundo'
 Plug 'mbbill/undotree'
 Plug 'altercation/vim-colors-solarized'
 Plug 'sickill/vim-monokai'
-Plug 'bling/vim-airline'
+Plug 'morhetz/gruvbox'
+Plug 'w0ng/vim-hybrid'
+Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'kris89/vim-multiple-cursors'
-Plug 'ctrlpvim/ctrlp.vim'
-Plug 'godlygeek/tabular' "easily make tables
+Plug 'terryma/vim-multiple-cursors'
+Plug 'junegunn/vim-easy-align'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'tpope/vim-surround' "manipulate parenthesis
 Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 Plug 'Shougo/unite.vim'
 Plug 'Shougo/neomru.vim'
 Plug 'Shougo/neoyank.vim'
 Plug 'xolox/vim-misc'
-Plug 'nathanaelkane/vim-indent-guides'
-Plug 'kien/rainbow_parentheses.vim'
 Plug 'tomtom/tcomment_vim'
 Plug 'Lokaltog/vim-easymotion'
+Plug 'airblade/vim-gitgutter'
+Plug 'mhinz/vim-grepper'
+Plug 'embear/vim-localvimrc'
+Plug 'kassio/neoterm' " neovim
+"Plug 'bfredl/nvim-ipy' " neovim
 
 function! DoRemote(arg)
   UpdateRemotePlugins
@@ -104,8 +108,9 @@ endif
 "---------------------------------------------------------------------------}}}
 " Colorscheme and Fonts {{{
 set background=dark
+"let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 colorscheme solarized
-set t_Co=256
+" set t_Co=256
 
 "---------------------------------------------------------------------------}}}
 " Features {{{
@@ -169,9 +174,9 @@ set mouse=a
 set cmdheight=2
 " Display line numbers on the left
 set number
-set relativenumber
+"set relativenumber "causes slowness
 " Quickly time out on keycodes, but never time out on mappings
-set notimeout ttimeout ttimeoutlen=200
+set notimeout ttimeout ttimeoutlen=50
 " Use <F11> to toggle between 'paste' and 'nopaste'
 set pastetoggle=<F11>
 " Natural slpit opening
@@ -200,11 +205,13 @@ autocmd Filetype lua setlocal ts=2 sw=2 expandtab
 " Map Y to act like D and C, i.e. to yank until EOL, rather than act as yy,
 map Y y$
 " Map <F3> (redraw screen) to also turn off search highlighting until the
-nnoremap <F3> :nohl<CR>
+nnoremap <F8> :nohl<CR>
+" NERD toggle
+nnoremap <F2> :NERDTreeToggle<CR>
 " Gundo toggle
-nnoremap <F5> :UndotreeToggle<CR>
+nnoremap <F3> :UndotreeToggle<CR>
 " Tagbar toggle
-nnoremap <F8> :TagbarToggle<CR>
+nnoremap <F4> :TagbarToggle<CR>
 " Switch buffers using alt+number
 nnoremap <A-1> :1b<CR>
 nnoremap <A-2> :2b<CR>
@@ -222,27 +229,37 @@ noremap <C-J> <C-W>j
 noremap <C-K> <C-W>k
 noremap <C-H> <C-W>h
 noremap <C-L> <C-W>l
+" Fast resize
+if bufwinnr(1)
+  map + <C-W>+
+  map - <C-W>-
+endif
+
 " Nvim terminal mapping
 tnoremap <esc> <C-\><C-n>
+command! Term :sp | term
 
 "---------------------------------------------------------------------------}}}
 " External Plugin Settings {{{
 if g:is_exuberant
-    source ~/dotfiles/.vim/plugin_settings/easytags.vim
+    source ~/dotfiles/vim/plugin-settings/easytags.vim
 endif
-source ~/.vim/plugin_settings/ultisnips.vim
-source ~/.config/nvim/plugin-settings/deoplete.vim
-source ~/.config/nvim/plugin-settings/jedi-vim.vim
-source ~/.config/nvim/plugin-settings/lua-ftplugin.vim
-source ~/.config/nvim/plugin-settings/deoplete-ternjs.vim
-source ~/.config/nvim/plugin-settings/unite.vim
-source ~/.config/nvim/plugin-settings/airline.vim
-source ~/.config/nvim/plugin-settings/syntastic.vim
-source ~/.config/nvim/plugin-settings/indent-guides.vim
-source ~/.config/nvim/plugin-settings/echodoc.vim
-source ~/.config/nvim/plugin-settings/ensime-vim.vim
+source ~/dotfiles/vim/plugin-settings/fzf.vim
+source ~/dotfiles/vim/plugin-settings/ultisnips.vim
+source ~/dotfiles/vim/plugin-settings/unite.vim
+source ~/dotfiles/vim/plugin-settings/airline.vim
+source ~/dotfiles/vim/plugin-settings/syntastic.vim
+source ~/dotfiles/vim/plugin-settings/indent-guides.vim
+source ~/dotfiles/vim/plugin-settings/echodoc.vim
+source ~/dotfiles/vim/plugin-settings/vim-localvimrc.vim
+source ~/dotfiles/nvim/plugin-settings/deoplete.vim
+source ~/dotfiles/nvim/plugin-settings/jedi-vim.vim
+source ~/dotfiles/nvim/plugin-settings/lua-ftplugin.vim
+source ~/dotfiles/nvim/plugin-settings/deoplete-ternjs.vim
+source ~/dotfiles/nvim/plugin-settings/ensime-vim.vim
+source ~/dotfiles/nvim/plugin-settings/nvim-ipy.vim
 "---------------------------------------------------------------------------}}}
 "Local Machine Settings
-if filereadable(expand('~/.nvimrc.local'))
-    source ~/.nvimrc.local
+if filereadable(expand('~/.vimrc.local'))
+    source ~/.vimrc.local
 endif
