@@ -107,6 +107,7 @@ elseif s:autocompleter == 'neo'
     Plug 'Shougo/echodoc'
     Plug 'davidhalter/jedi-vim'
     Plug 'derekwyatt/vim-scala'
+    Plug 'vim-ruby/vim-ruby'
     "Plug 'ensime/ensime-vim'
     "Plug 'osyo-manga/vim-reunions'
     "Plug 'osyo-manga/vim-marching'
@@ -292,6 +293,11 @@ noremap <C-J> <C-W>j
 noremap <C-K> <C-W>k
 noremap <C-H> <C-W>h
 noremap <C-L> <C-W>l
+" Fast resize
+if bufwinnr(1)
+  map + <C-W>+
+  map - <C-W>-
+endif
 
 "---------------------------------------------------------------------------}}}
 " External Plugin Settings {{{

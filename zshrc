@@ -26,6 +26,9 @@ fi
 if [ -d "$HOME/.local/bin" ] ; then
     export PATH="$HOME/.local/bin:$PATH"
 fi
+if which ruby >/dev/null && which gem >/dev/null; then
+    PATH="$(ruby -rubygems -e 'puts Gem.user_dir')/bin:$PATH"
+fi
 
 if [[ $TERM == 'xterm' ]]; then
     export TERM=xterm-256color
