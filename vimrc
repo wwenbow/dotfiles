@@ -70,6 +70,7 @@ Plug 'guns/vim-clojure-static'
 Plug 'chase/vim-ansible-yaml'
 Plug 'tomtom/tcomment_vim'
 Plug 'embear/vim-localvimrc'
+Plug 'iamcco/markdown-preview.vim'
 
 " Web dev
 " npm install tern in bundles/tern
@@ -308,6 +309,7 @@ source ~/dotfiles/vim/plugin-settings/vim-latex.vim
 source ~/dotfiles/vim/plugin-settings/syntastic.vim
 source ~/dotfiles/vim/plugin-settings/vim-localvimrc.vim
 source ~/dotfiles/vim/plugin-settings/fzf.vim
+source ~/dotfiles/vim/plugin-settings/markdown-preview.vim
 if g:is_exuberant
     source ~/dotfiles/.vim/plugin-settings/easytags.vim
 endif

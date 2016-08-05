@@ -58,6 +58,7 @@ Plug 'Lokaltog/vim-easymotion'
 Plug 'airblade/vim-gitgutter'
 Plug 'mhinz/vim-grepper'
 Plug 'embear/vim-localvimrc'
+Plug 'iamcco/markdown-preview.vim'
 Plug 'kassio/neoterm' " neovim
 "Plug 'bfredl/nvim-ipy' " neovim
 
@@ -252,6 +253,7 @@ source ~/dotfiles/vim/plugin-settings/syntastic.vim
 source ~/dotfiles/vim/plugin-settings/indent-guides.vim
 source ~/dotfiles/vim/plugin-settings/echodoc.vim
 source ~/dotfiles/vim/plugin-settings/vim-localvimrc.vim
+source ~/dotfiles/vim/plugin-settings/markdown-preview.vim
 source ~/dotfiles/nvim/plugin-settings/deoplete.vim
 source ~/dotfiles/nvim/plugin-settings/jedi-vim.vim
 source ~/dotfiles/nvim/plugin-settings/lua-ftplugin.vim
