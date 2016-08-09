@@ -1,3 +1,4 @@
+autocmd BufWritePost *.scala :EnTypeCheck
 if !exists('g:deoplete#omni#input_patterns')
     let g:deoplete#omni#input_patterns = {}
 endif
