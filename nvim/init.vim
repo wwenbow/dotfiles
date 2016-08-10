@@ -1,1 +1,1 @@
-vim-plug.vim
+../vimrc-combined
