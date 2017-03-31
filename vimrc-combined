@@ -261,6 +261,7 @@ set cinkeys-=0#
 "set shiftwidth=2
 "set tabstop=2
 autocmd Filetype javascript setlocal ts=2 sw=2 expandtab
+autocmd Filetype yaml setlocal ts=2 sw=2 expandtab
 autocmd Filetype lua setlocal ts=4 sw=4 expandtab
 
 "---------------------------------------------------------------------------}}}

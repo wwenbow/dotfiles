@@ -7,7 +7,7 @@ let g:lua_check_syntax = 0
 let g:lua_complete_omni = 1
 let g:lua_complete_dynamic = 0
 let g:lua_define_completion_mappings = 0
-let g:lua_omni_blacklist = ['.*luacheck.*']
+let g:lua_omni_blacklist = ['.*luacheck.*', '.*depreciated.*', '.*redeem.*']
 
 let g:neocomplete#force_omni_input_patterns.lua =
             \ '\w\+[.:]\|require\s*(\?["'']\w*'
