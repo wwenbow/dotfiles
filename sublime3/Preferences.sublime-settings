@@ -1,0 +1,17 @@
+{
+	"color_scheme": "Packages/Material Theme/schemes/Material-Theme.tmTheme",
+	"font_face": "source code pro",
+	"font_size": 12,
+	"hot_exit": false,
+	"ignored_packages":
+	[
+		"Kite",
+		"Vintage",
+		"Vintage-Origami",
+		"VintageLines"
+	],
+	"remember_open_files": false,
+	"show_definitions": true,
+	"theme": "Material-Theme.sublime-theme",
+	"vintageous_use_sys_clipboard": true
+}

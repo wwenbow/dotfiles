@@ -1,0 +1,28 @@
+{
+	"bootstrapped": true,
+	"in_process_packages":
+	[
+	],
+	"installed_packages":
+	[
+		"BracketHighlighter",
+		"CTags",
+		"Ensime",
+		"Evernote",
+		"GhostText",
+		"Git",
+		"GitGutter",
+		"LuaExtended",
+		"Material Theme",
+		"Origami",
+		"Package Control",
+		"SublimeCodeIntel",
+		"SublimeLinter",
+		"SublimeLinter-luacheck",
+		"Vintage-Origami",
+		"VintageES",
+		"VintageLines",
+		"Vintageous",
+		"VintageousOrigami"
+	]
+}
