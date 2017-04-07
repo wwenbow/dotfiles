@@ -21,3 +21,7 @@ fi
 if [ ! -d ~/.fzf/ ]; then
     git clone https://github.com/junegunn/fzf.git ~/.fzf
 fi
+
+if [ ! -d ~/.config/up/ ]; then
+    curl --create-dirs -o ~/.config/up/up.sh https://raw.githubusercontent.com/shannonmoeller/up/master/up.sh
+fi
