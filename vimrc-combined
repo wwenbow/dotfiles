@@ -180,11 +180,14 @@ endif
 syntax on "Enable syntax highlighting
 
 " Copy ubuntu clipboard
-if has('unnamedplus')
-    set clipboard=unnamedplus
-else
-    set clipboard=unnamed
+if has('unix')
+    if has('macunix')
+        set clipboard=unnamed
+    else
+        set clipboard=unnamedplus
+    endif
 endif
+
 
 if v:version >= 703
     set colorcolumn=80 "Highlight column 80, page border

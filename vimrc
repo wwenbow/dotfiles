@@ -155,10 +155,12 @@ filetype indent plugin on
 syntax on "Enable syntax highlighting
 
 " Copy ubuntu clipboard
-if has('unnamedplus')
-    set clipboard=unnamedplus
-else
-    set clipboard=unnamed
+if has('unix')
+    if has('macunix')
+        set clipboard=unnamed
+    else
+        set clipboard=unnamedplus
+    endif
 endif
 
 "set omnifunc=syntaxcomplete#Complete "Omni completion
