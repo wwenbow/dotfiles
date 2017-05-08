@@ -72,6 +72,7 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'tpope/vim-surround' "manipulate parenthesis
 Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 Plug 'Shougo/unite.vim'
+Plug 'Shougo/denite.nvim'
 Plug 'Shougo/neomru.vim'
 Plug 'Shougo/neoyank.vim'
 Plug 'xolox/vim-misc'
@@ -315,6 +316,7 @@ if g:is_exuberant
 endif
 source ~/dotfiles/vim/plugin-settings/fzf.vim
 source ~/dotfiles/vim/plugin-settings/unite.vim
+source ~/dotfiles/vim/plugin-settings/grepper.vim
 source ~/dotfiles/vim/plugin-settings/airline.vim
 source ~/dotfiles/vim/plugin-settings/syntastic.vim
 source ~/dotfiles/vim/plugin-settings/indent-guides.vim

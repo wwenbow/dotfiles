@@ -7,7 +7,7 @@ call unite#custom#profile('default', 'context', {
             \ })
 nnoremap <leader>f :<C-u>Unite -buffer-name=files -prompt-focus -resume file_rec/git<cr>
 nnoremap <leader>t :<C-u>Unite -buffer-name=files file<cr>
-nnoremap <leader>g :<C-u>Unite grep:.<cr>
+"nnoremap <leader>g :<C-u>Unite grep:.<cr>
 nnoremap <leader>r :<C-u>Unite -buffer-name=mru file_mru<cr>
 nnoremap <leader>y :<C-u>Unite -buffer-name=yank history/yank<cr>
 nnoremap <leader>b :<C-u>Unite -buffer-name=buffer buffer<cr>
