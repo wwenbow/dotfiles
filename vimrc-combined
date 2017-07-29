@@ -350,6 +350,7 @@ endif
 " GVim Settings {{{
 set guioptions-=L
 set guioptions-=r
+set guioptions-=T
 set guioptions+=c
 "---------------------------------------------------------------------------}}}
 "Local Machine Settings
