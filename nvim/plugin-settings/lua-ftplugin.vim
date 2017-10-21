@@ -3,6 +3,13 @@ autocmd FileType lua let $LUA_PATH = xolox#misc#os#exec({'command': 'luajit -e "
 autocmd FileType lua let $LUA_PATH = $LUA_PATH . ';' . getcwd() . '/?.lua'
 autocmd FileType lua setlocal omnifunc=xolox#lua#omnifunc
 
+" if !exists('g:deoplete#omni#input_patterns')
+"     let g:deoplete#omni#input_patterns = {}
+" endif
+if !exists('g:deoplete#omni#functions')
+    let g:deoplete#omni#functions = {}
+endif
+
 let g:lua_check_syntax = 0
 let g:lua_complete_omni = 1
 let g:lua_complete_dynamic = 0

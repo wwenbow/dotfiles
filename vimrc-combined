@@ -55,10 +55,21 @@ endif
 
 " My bundles here:
 " original repos on GitHub
+function! BuildComposer(info)
+  if a:info.status != 'unchanged' || a:info.force
+    if has('nvim')
+      !cargo build --release
+    else
+      !cargo build --release --no-default-features --features json-rpc
+    endif
+  endif
+endfunction
+
 Plug 'tpope/vim-fugitive'
 Plug 'scrooloose/nerdtree'
 Plug 'majutsushi/tagbar'
-Plug 'scrooloose/syntastic'
+" Plug 'scrooloose/syntastic'
+Plug 'w0rp/ale'
 Plug 'mbbill/undotree'
 Plug 'altercation/vim-colors-solarized'
 Plug 'sickill/vim-monokai'
@@ -80,7 +91,9 @@ Plug 'tomtom/tcomment_vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'mhinz/vim-grepper'
 Plug 'embear/vim-localvimrc'
-Plug 'iamcco/markdown-preview.vim'
+Plug 'vim-pandoc/vim-pandoc-syntax'
+Plug 'vim-pandoc/vim-pandoc'
+Plug 'euclio/vim-markdown-composer', { 'do': function('BuildComposer') }
 Plug 'xolox/vim-lua-ftplugin'
 Plug 'guns/vim-clojure-static'
 Plug 'chase/vim-ansible-yaml'
@@ -125,18 +138,19 @@ elseif s:autocompleter == 'neo' || s:autocompleter == 'deo'
     if has('nvim')
         Plug 'Shougo/deoplete.nvim', { 'do' : function('DoRemote') }
         Plug 'ensime/ensime-vim', { 'do' : function('DoRemote') }
+        Plug 'zchee/deoplete-jedi'
         if g:web_dev_plugins == 1
             Plug 'carlitux/deoplete-ternjs'
         endif
     else
         Plug 'Shougo/neocomplete.vim'
+        Plug 'davidhalter/jedi-vim'
         "Plug 'Shougo/neosnippet.vim'
         "Plug 'Shougo/neosnippet-snippets'
         "Plug 'ensime/ensime-vim'
     endif
     Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
     Plug 'Shougo/echodoc'
-    Plug 'davidhalter/jedi-vim'
     "Plug 'osyo-manga/vim-reunions'
     "Plug 'osyo-manga/vim-marching'
 elseif s:autocompleter == 'ycm'

@@ -1,3 +1,2 @@
-if has("macunix")
-    let g:mkdp_path_to_chrome = "open -a Google\\ Chrome"
-endif
+"markdown composer
+let g:markdown_composer_external_renderer='pandoc -f markdown -t html'
