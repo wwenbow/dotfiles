@@ -99,6 +99,9 @@ Plug 'guns/vim-clojure-static'
 Plug 'chase/vim-ansible-yaml'
 Plug 'derekwyatt/vim-scala'
 Plug 'vim-ruby/vim-ruby'
+Plug 'Vimjas/vim-python-pep8-indent'
+Plug 'tpope/vim-repeat'
+Plug 'svermeulen/vim-easyclip'
 
 function! DoRemote(arg)
     if has('nvim')
