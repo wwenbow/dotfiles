@@ -65,6 +65,7 @@ function! BuildComposer(info)
   endif
 endfunction
 
+Plug 'zhou13/vim-easyescape'
 Plug 'tpope/vim-fugitive'
 Plug 'scrooloose/nerdtree'
 Plug 'majutsushi/tagbar'
@@ -101,7 +102,6 @@ Plug 'derekwyatt/vim-scala'
 Plug 'vim-ruby/vim-ruby'
 Plug 'Vimjas/vim-python-pep8-indent'
 Plug 'tpope/vim-repeat'
-Plug 'svermeulen/vim-easyclip'
 
 function! DoRemote(arg)
     if has('nvim')
@@ -320,6 +320,10 @@ if bufwinnr(1)
   map + <C-W>+
   map - <C-W>-
 endif
+
+let g:easyescape_chars = { "j": 2 }
+let g:easyescape_timeout = 300
+cnoremap jj <ESC>
 
 " Nvim terminal mapping
 if has('nvim')
