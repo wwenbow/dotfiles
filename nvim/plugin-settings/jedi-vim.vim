@@ -21,4 +21,4 @@
 
 " With deoplete-jedi
 let g:deoplete#sources#jedi#server_timeout = 180
-let g:deoplete#sources#jedi#python_path = '/usr/bin/python3'
+" let g:deoplete#sources#jedi#python_path = '/usr/bin/python3'

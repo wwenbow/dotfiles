@@ -38,7 +38,7 @@ if v:version <= 703
     let s:autocompleter = 'old'
 elseif has('win32') || has('win64') || has('lua')
     let s:autocompleter = 'neo'
-elseif has('nvim')
+elseif has('nvim') || v:version >= 800
     let s:autocompleter = 'deo'
 else
     let s:autocompleter = 'ycm'
@@ -102,6 +102,7 @@ Plug 'derekwyatt/vim-scala'
 Plug 'vim-ruby/vim-ruby'
 Plug 'Vimjas/vim-python-pep8-indent'
 Plug 'tpope/vim-repeat'
+Plug 'zhou13/vim-easyescape'
 
 function! DoRemote(arg)
     if has('nvim')
@@ -140,11 +141,21 @@ if s:autocompleter == 'old'
 elseif s:autocompleter == 'neo' || s:autocompleter == 'deo'
     if has('nvim')
         Plug 'Shougo/deoplete.nvim', { 'do' : function('DoRemote') }
-        Plug 'ensime/ensime-vim', { 'do' : function('DoRemote') }
+        " Plug 'ensime/ensime-vim', { 'do' : function('DoRemote') }
         Plug 'zchee/deoplete-jedi'
         if g:web_dev_plugins == 1
             Plug 'carlitux/deoplete-ternjs'
         endif
+    elseif v:version >= 800
+        Plug 'Shougo/deoplete.nvim'
+        Plug 'roxma/nvim-yarp'
+        Plug 'roxma/vim-hug-neovim-rpc'
+        " Plug 'ensime/ensime-vim', { 'do' : function('DoRemote') }
+        Plug 'zchee/deoplete-jedi'
+        if g:web_dev_plugins == 1
+            Plug 'carlitux/deoplete-ternjs'
+        endif
+
     else
         Plug 'Shougo/neocomplete.vim'
         Plug 'davidhalter/jedi-vim'
@@ -322,7 +333,6 @@ if bufwinnr(1)
 endif
 
 let g:easyescape_chars = { "j": 2 }
-let g:easyescape_timeout = 300
 cnoremap jj <ESC>
 
 " Nvim terminal mapping
@@ -349,7 +359,7 @@ if s:autocompleter == 'old'
     source ~/.vim/plugin-settings/neocomplcache.vim
     source ~/.vim/plugin-settings/neosnippet.vim
 elseif s:autocompleter == 'neo' || s:autocompleter == 'deo'
-    if has('nvim')
+    if has('nvim') || v:version  >= 800
         source ~/dotfiles/nvim/plugin-settings/deoplete.vim
         source ~/dotfiles/nvim/plugin-settings/jedi-vim.vim
         source ~/dotfiles/nvim/plugin-settings/lua-ftplugin.vim

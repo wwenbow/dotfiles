@@ -48,6 +48,9 @@ zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 export TERMINFO="$HOME/.terminfo"
 export EDITOR="nvim"
 
+autoload bashcompinit
+bashcompinit
+
 #local
 if [ -e "$HOME/.zshrc.local" ] ; then
     source ~/.zshrc.local
@@ -55,4 +58,4 @@ fi
 
 # Fzf source
 source ~/.fzf.zsh
-source ~/.config/up/up.sh
+# source ~/.config/up/up.sh
