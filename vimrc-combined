@@ -68,7 +68,7 @@ endfunction
 Plug 'zhou13/vim-easyescape'
 Plug 'tpope/vim-fugitive'
 Plug 'scrooloose/nerdtree'
-Plug 'majutsushi/tagbar'
+Plug 'majutsushi/tagbar', { 'on': 'TagbarToggle' }
 " Plug 'scrooloose/syntastic'
 Plug 'w0rp/ale'
 Plug 'mbbill/undotree'
