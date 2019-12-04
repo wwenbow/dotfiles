@@ -131,7 +131,7 @@ endif
 "---------------------------------------------------------------------------}}}
 " Colorscheme and Fonts {{{
 set background=dark
-colorscheme solarized
+colorscheme hybrid
 set t_Co=256
 " font
 if has("gui_running")

@@ -8,9 +8,9 @@
 cat prereqs.txt | xargs -n 1 sudo apt-get install -y
 
 # Download prezto
-if [ ! -d ~/.oh-my-zsh/ ]; then
-   git clone --recursive https://github.com/sorin-ionescu/prezto.git ~/.zprezto
-fi
+#if [ ! -d ~/.zprezto/ ]; then
+#   git clone --recursive https://github.com/sorin-ionescu/prezto.git ~/.zprezto
+#fi
 
 # Download bash_it
 if [ ! -d ~/bash_it/ ]; then
