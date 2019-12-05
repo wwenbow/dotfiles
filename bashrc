@@ -123,12 +123,12 @@ case $- in
 esac
 
 # Path to the bash it configuration
-export BASH_IT="/home/wwenbow/.bash_it"
+export BASH_IT="$HOME/.bash_it"
 
 # Lock and Load a custom theme file.
 # Leave empty to disable theming.
 # location /.bash_it/themes/
-export BASH_IT_THEME='/home/wwenbow/dotfiles/bash_it_theme.bash'
+export BASH_IT_THEME="$HOME/dotfiles/bash_it_theme.bash"
 
 # (Advanced): Change this to the name of your remote repo if you
 # cloned bash-it with a remote other than origin such as `bash-it`.
@@ -177,4 +177,7 @@ export SCM_CHECK=true
 # Load Bash It
 source "$BASH_IT"/bash_it.sh
 
+export PATH=$PATH:$HOME/bin
+
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+[ -f ~/.bashrc.local ] && source ~/.bashrc.local
